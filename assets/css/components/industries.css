@@ -1,0 +1,108 @@
+/* Vitrine de setores — markup Skylo (.section-photos-images / row / image).
+   Sem a classe .section-photos no wrapper: o bundle WebGL ancora nela e zera a opacidade. */
+
+.scroll-panel.is-industries {
+  --glow-x: 50%;
+  --glow-y: 100%;
+}
+
+.industries_header {
+  max-width: 46rem;
+  margin-bottom: 1.25rem;
+}
+
+.industries_header .skylo-is_paragraph-wrapper {
+  max-width: 36rem;
+}
+
+.is-industries .section-photos-images {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-right: 0;
+}
+
+.is-industries .section-photos-row {
+  width: 100%;
+  padding: 0;
+}
+
+.is-industries .section-photos-row-inner {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.is-industries .section-photos-image {
+  margin-bottom: 0;
+}
+
+@media (min-width: 1050px) {
+  .is-industries .section-photos-images {
+    gap: 1rem;
+  }
+
+  .is-industries .section-photos-row-inner {
+    gap: 1rem;
+  }
+
+  .is-industries .section-photos-image {
+    flex: 1 1 0;
+    height: min(28vh, 17.5rem);
+    padding-bottom: 0;
+    transition: transform .5s;
+  }
+
+  .is-industries .section-photos-image:hover {
+    transform: translateY(-.25rem);
+  }
+
+  .is-industries .section-photos-text {
+    max-width: 76%;
+    margin-right: 8%;
+    font-family: Inter, Arial, sans-serif;
+  }
+}
+
+@media (min-width: 1050px) and (max-height: 760px) {
+  .industries_header {
+    margin-bottom: 1.15rem;
+  }
+
+  .is-industries .section-photos-image {
+    height: min(24vh, 14.5rem);
+  }
+
+  .is-industries .section-photos-text {
+    font-size: 1.25rem;
+    margin-bottom: 8%;
+    margin-left: 8%;
+  }
+}
+
+@media (max-width: 1049px) {
+  .is-industries .section-photos-images {
+    margin: 0 -.25rem;
+  }
+
+  .is-industries .section-photos-row {
+    height: 20vh;
+    width: 100%;
+    margin: .25rem 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .is-industries .section-photos-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .is-industries .section-photos-row-inner {
+    width: max-content;
+  }
+
+  .is-industries .section-photos-image {
+    scroll-snap-align: start;
+  }
+}

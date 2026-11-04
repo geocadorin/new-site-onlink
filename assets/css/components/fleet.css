@@ -1,0 +1,76 @@
+/* "Gestão de Frota que Impacta" — inspirada em .globe-text-3 ("Satellite connectivity for certified devices"). */
+
+.scroll-panel.is-fleet {
+  --glow-x: 80%;
+  --glow-y: 50%;
+}
+
+/* .skylo-is_component: texto à esquerda, cartões à direita. */
+.fleet_component {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
+  width: 100%;
+}
+
+.fleet_component .skylo-is_text {
+  flex: 0 1 26rem;
+  margin-right: 0;
+}
+
+.fleet-card {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  height: 100%;
+  padding: 1.75rem;
+}
+
+/* Os SVGs de assets/img/globe usam viewBox 60x100 com o desenho no terço central: o recorte remove a sobra. */
+.fleet-card_icon {
+  width: 2.4rem;
+  height: 2rem;
+  margin-bottom: .5rem;
+  overflow: hidden;
+}
+
+.fleet-card_icon img {
+  display: block;
+  width: 2.4rem;
+  height: 4rem;
+  margin-top: -1rem;
+}
+
+@media (min-width: 1050px) {
+  .fleet-cards {
+    display: grid;
+    flex: 0 1 42rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 1050px) and (max-height: 760px) {
+  .fleet-card {
+    padding: 1.25rem 1.5rem;
+  }
+}
+
+@media (max-width: 1049px) {
+  .fleet_component {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+  }
+
+  .fleet_component .skylo-is_text {
+    flex: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .fleet-card {
+    padding: 1.5rem 1.25rem;
+  }
+}

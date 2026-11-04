@@ -1,0 +1,65 @@
+/* Icons / marca — design-system.html #icons (.brand-wrapper, .skylo-symbol, .skylo-wordmark). */
+
+.brand-wrapper {
+  background-color: #0000;
+  border-radius: 4px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: auto;
+  height: 33.7px;
+  padding-right: 2px;
+  display: flex;
+}
+
+.skylo-symbol {
+  flex: none;
+  width: 33.7px;
+  height: 100%;
+  margin-right: 10px;
+  display: block;
+  position: relative;
+}
+
+.skylo-wordmark {
+  flex: none;
+  width: 74px;
+  height: 100%;
+  padding-right: 1.6px;
+  position: relative;
+}
+
+.skylo-wordmark.is-black,
+.skylo-wordmark.is-white {
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 76px;
+  padding-right: 0;
+}
+
+.skylo-wordmark.is-black { display: flex; }
+.skylo-wordmark.is-white { display: none; }
+
+@media screen and (max-width: 767px) {
+  .brand-wrapper {
+    height: 1.625rem;
+    padding-right: 0;
+  }
+
+  .skylo-symbol {
+    width: 1.625rem;
+    margin-right: 4px;
+  }
+
+  .skylo-wordmark {
+    width: 3.6rem;
+    margin-top: 0;
+    right: .1rem;
+  }
+
+  .skylo-wordmark.is-black,
+  .skylo-wordmark.is-white {
+    width: 64px;
+  }
+}

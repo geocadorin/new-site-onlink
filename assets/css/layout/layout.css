@@ -1,0 +1,87 @@
+/* Layout — containers e paddings do Skylo. */
+
+.page-wrapper {
+  position: relative;
+}
+
+.container-large {
+  width: 100%;
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container-large.footer,
+.container-large.off-max-w {
+  max-width: none;
+}
+
+.container-medium {
+  width: 100%;
+  max-width: 62.25rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container-small {
+  width: 100%;
+  max-width: 60rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-padding {
+  width: 100%;
+  padding-left: 8rem;
+  padding-right: 8rem;
+}
+
+.page-padding.is-navbar {
+  align-items: center;
+  height: 138px;
+  padding-left: 4%;
+  padding-right: 4%;
+  display: flex;
+}
+
+.page-padding.no-padding {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media screen and (min-width: 1280px) {
+  .page-padding {
+    padding-left: 8%;
+    padding-right: 8%;
+  }
+
+  .page-padding.is-navbar {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .page-padding.is-navbar {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .page-padding {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .page-padding {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .main-wrapper {
+    overflow: hidden;
+  }
+}

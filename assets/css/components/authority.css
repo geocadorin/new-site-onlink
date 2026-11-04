@@ -1,0 +1,78 @@
+/* Autoridade OnBoard — Surfaces + Content (design-system.html #surfaces / #content). */
+
+.scroll-panel.is-authority {
+  --glow-x: 12%;
+  --glow-y: 18%;
+}
+
+.authority_header {
+  max-width: 48rem;
+  margin-bottom: 2rem;
+}
+
+.authority_header .skylo-is_paragraph-wrapper {
+  max-width: 38rem;
+}
+
+.authority-highlights {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.authority-card {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  height: 100%;
+  padding: 1.5rem 1.35rem;
+}
+
+.authority-card_value {
+  color: var(--white);
+  font-family: Inter, Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -.04em;
+  line-height: 1;
+}
+
+.authority-card_value .text-color-green {
+  font-size: .7em;
+}
+
+@media (min-width: 1050px) and (max-height: 760px) {
+  .authority_header {
+    margin-bottom: 1.25rem;
+  }
+
+  .authority-card {
+    padding: 1.15rem 1.2rem;
+  }
+
+  .authority-card_value {
+    font-size: 1.65rem;
+  }
+}
+
+@media (max-width: 1049px) {
+  .authority-highlights.surface-rail {
+    display: flex;
+  }
+
+  .authority_header {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .authority-card {
+    padding: 1.25rem;
+  }
+
+  .authority-card_value {
+    font-size: 1.5rem;
+  }
+}

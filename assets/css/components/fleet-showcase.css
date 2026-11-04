@@ -1,0 +1,550 @@
+/* Vitrine 3D Scroll-Driven (Sticky Viewport Track 400vh) — tokens Skylo
+   (.skylo-label, .heading-large, .skylo-is_paragraph, .surface-frosty, .process-step_tag). */
+
+/* 1. Container Pai:
+   - No modo de scroll virtual padrão (Skylo), ocupa 100vh fixos como todo .scroll-panel
+     e os 4 setores avançam in-place sem deslocar a página.
+   - No fallback de scroll nativo (.is-scroll-native), usa trilha de 400vh com sticky. */
+.fleet-showcase-track {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  background-color: var(--skylo-dark-background);
+}
+
+.is-scroll-native .fleet-showcase-track {
+  height: 400vh;
+  height: calc(var(--vh, 1vh) * 400);
+}
+
+/* 2. Container Filho (Viewport de 100vh) */
+.fleet-showcase-sticky,
+.is-scroll-native .fleet-showcase-sticky.scroll-panel {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  min-height: 0;
+  overflow: hidden;
+}
+
+.is-scroll-native .fleet-showcase-sticky .section-inner {
+  position: absolute;
+  min-height: 0;
+  height: 100%;
+  padding-bottom: 0;
+}
+
+.scroll-panel.is-fleet-showcase {
+  --glow-x: 78%;
+  --glow-y: 42%;
+  overflow: hidden;
+}
+
+.fleet-showcase {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 1.15rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: calc((var(--vh, 1vh) * 100) - 6.75rem);
+}
+
+/* Header & Stepper de Progresso */
+.fleet-showcase_header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  min-width: 0;
+}
+
+.fleet-showcase_header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.fleet-showcase_scroll-cue {
+  color: var(--skylo-green);
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+}
+
+.fleet-showcase_stepper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  width: 100%;
+}
+
+.fleet-showcase_steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fleet-showcase_step {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.03);
+  color: var(--white);
+  text-align: left;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 0.925rem;
+  font-weight: 500;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: border-color 0.35s, box-shadow 0.35s, background-color 0.25s, color 0.25s;
+}
+
+.fleet-showcase_step:hover,
+.fleet-showcase_step:focus-visible {
+  border-color: color-mix(in srgb, var(--skylo-green) 40%, transparent);
+  box-shadow: 0 0 32px color-mix(in srgb, var(--skylo-green) 12%, transparent);
+  outline: none;
+}
+
+.fleet-showcase_step.is-completed {
+  border-color: color-mix(in srgb, var(--skylo-green) 28%, transparent);
+  background-color: rgba(115, 245, 116, 0.05);
+}
+
+.fleet-showcase_step.is-active {
+  border-color: color-mix(in srgb, var(--skylo-green) 60%, transparent);
+  background-color: #73f5741f;
+  box-shadow: 0 0 40px color-mix(in srgb, var(--skylo-green) 16%, transparent);
+}
+
+.fleet-showcase_step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem 0.45rem;
+  border-radius: 0.2rem;
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #9ba4b6;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  transition: background-color 0.25s, color 0.25s;
+}
+
+.fleet-showcase_step.is-active .fleet-showcase_step-num,
+.fleet-showcase_step.is-completed .fleet-showcase_step-num {
+  background-color: #73f57429;
+  color: var(--skylo-green);
+}
+
+.fleet-showcase_step-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Barra de progresso contínua da trilha de 400vh */
+.fleet-showcase_progress {
+  position: relative;
+  width: 100%;
+  height: 3px;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.fleet-showcase_progress-bar {
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #12f6bc 0%, var(--skylo-green) 65%, var(--neon-green) 100%);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--skylo-green) 65%, transparent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.12s ease-out;
+  will-change: transform;
+}
+
+/* Grid Principal: Painel de Conteúdo + Palco 3D */
+.fleet-showcase_layout {
+  display: grid;
+  grid-template-columns: minmax(22rem, 29rem) minmax(0, 1fr);
+  gap: 1.25rem;
+  min-width: 0;
+  min-height: 0;
+}
+
+.fleet-showcase_panel {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+.fleet-showcase_telemetry {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  height: 100%;
+  padding: 1.5rem 1.6rem;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.fleet-showcase_telemetry.is-switching {
+  animation: fleet-showcase-panel-fade 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes fleet-showcase-panel-fade {
+  from {
+    opacity: 0.35;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fleet-showcase_telemetry-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.fleet-showcase_counter {
+  font-size: 0.8125rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.fleet-showcase_sector-title.heading-large {
+  font-size: clamp(1.45rem, 2.15vw, 1.95rem);
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  overflow-wrap: break-word;
+}
+
+.fleet-showcase_sector-desc.skylo-is_paragraph {
+  color: #9ba4b6;
+  font-size: 0.975rem;
+  line-height: 1.5;
+}
+
+/* Lista de Vantagens / Destaques por Setor */
+.fleet-showcase_highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0.9rem 0 0;
+  list-style: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.fleet-showcase_highlight {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding-left: 0.75rem;
+  border-left: 2px solid color-mix(in srgb, var(--skylo-green) 55%, transparent);
+}
+
+.fleet-showcase_highlight-dot {
+  flex: 0 0 0.45rem;
+  width: 0.45rem;
+  height: 0.45rem;
+  margin-top: 0.42rem;
+  border-radius: 50%;
+  background-color: var(--skylo-green);
+  box-shadow: 0 0 10px var(--skylo-green);
+}
+
+.fleet-showcase_highlight .surface-card_text {
+  color: var(--white);
+  font-size: 0.925rem;
+  line-height: 1.42;
+}
+
+.fleet-showcase_cta {
+  padding-top: 0.25rem;
+}
+
+.fleet-showcase_cta .text-link {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+/* Palco 3D */
+.fleet-showcase_stage {
+  position: relative;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  contain: strict;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  background-color: rgba(255, 255, 255, 0.03);
+  cursor: grab;
+}
+
+.fleet-showcase_stage:active {
+  cursor: grabbing;
+}
+
+.fleet-showcase_stage.surface-frosty > .fleet-showcase_canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.fleet-showcase_canvas canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: pan-y;
+}
+
+.fleet-showcase_stage.surface-frosty > .fleet-showcase_hint,
+.fleet-showcase_stage.surface-frosty > .fleet-showcase_live {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.fleet-showcase_live {
+  top: 1rem;
+  left: 1rem;
+}
+
+.fleet-showcase_hint {
+  right: 1rem;
+  bottom: 1rem;
+  margin: 0;
+  color: #9ba4b6;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  user-select: none;
+}
+
+.fleet-showcase_stage.surface-frosty > .fleet-showcase_loading,
+.fleet-showcase_stage.surface-frosty > .fleet-showcase_error {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: rgba(18, 19, 22, 0.78);
+}
+
+.fleet-showcase_error {
+  padding: 1.5rem;
+  color: #9ba4b6;
+  text-align: center;
+  font-family: Inter, Arial, sans-serif;
+}
+
+.fleet-showcase_spinner {
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid rgba(255, 255, 255, 0.16);
+  border-top-color: var(--skylo-green);
+  border-radius: 50%;
+  animation: fleet-showcase-spin 0.8s linear infinite;
+}
+
+.fleet-showcase_loading .skylo-label {
+  margin: 0;
+}
+
+@keyframes fleet-showcase-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fleet-showcase_spinner {
+    animation: none;
+    border-top-color: var(--skylo-green);
+  }
+
+  .fleet-showcase_telemetry.is-switching {
+    animation: none;
+  }
+
+  .fleet-showcase_progress-bar {
+    transition: none;
+  }
+}
+
+/* Ajustes para notebooks / alturas compactas */
+@media (min-width: 1050px) and (max-height: 920px) {
+  .fleet-showcase {
+    gap: 0.85rem;
+    height: calc((var(--vh, 1vh) * 100) - 6rem);
+  }
+
+  .fleet-showcase_header {
+    gap: 0.5rem;
+  }
+
+  .fleet-showcase_step {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .fleet-showcase_telemetry {
+    gap: 0.75rem;
+    padding: 1.15rem 1.35rem;
+  }
+
+  .fleet-showcase_sector-title.heading-large {
+    font-size: clamp(1.3rem, 2.6vh, 1.65rem);
+  }
+
+  .fleet-showcase_sector-desc.skylo-is_paragraph {
+    font-size: 0.9rem;
+    line-height: 1.42;
+  }
+
+  .fleet-showcase_highlights {
+    gap: 0.55rem;
+    padding-top: 0.65rem;
+  }
+
+  .fleet-showcase_highlight .surface-card_text {
+    font-size: 0.875rem;
+  }
+}
+
+/* Tablet e Mobile — mantém o Sticky Viewport enquadrado em 100vh */
+@media (max-width: 1049px) {
+  .fleet-showcase {
+    gap: 0.75rem;
+    height: calc((var(--vh, 1vh) * 100) - 6.25rem);
+  }
+
+  .fleet-showcase_layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(12.5rem, 42%) minmax(0, 1fr);
+    gap: 0.75rem;
+  }
+
+  .fleet-showcase_stage {
+    order: -1;
+    height: 100%;
+  }
+
+  .fleet-showcase_telemetry {
+    padding: 1.1rem 1.2rem;
+    gap: 0.65rem;
+  }
+
+  .fleet-showcase_sector-title.heading-large {
+    font-size: 1.35rem;
+  }
+
+  .fleet-showcase_sector-desc.skylo-is_paragraph {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .fleet-showcase {
+    gap: 0.6rem;
+    height: calc((var(--vh, 1vh) * 100) - 6.5rem);
+  }
+
+  .fleet-showcase_header-top .fleet-showcase_scroll-cue {
+    display: none;
+  }
+
+  .fleet-showcase_steps {
+    gap: 0.4rem;
+  }
+
+  .fleet-showcase_step {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    padding: 0.45rem 0.55rem;
+    font-size: 0.75rem;
+  }
+
+  .fleet-showcase_step-num {
+    font-size: 0.65rem;
+    padding: 0.1rem 0.35rem;
+  }
+
+  .fleet-showcase_layout {
+    grid-template-rows: minmax(10.5rem, 38%) minmax(0, 1fr);
+    gap: 0.6rem;
+  }
+
+  .fleet-showcase_telemetry {
+    padding: 0.9rem 1rem;
+    gap: 0.5rem;
+  }
+
+  .fleet-showcase_sector-title.heading-large {
+    font-size: 1.15rem;
+    line-height: 1.2;
+  }
+
+  .fleet-showcase_sector-desc.skylo-is_paragraph {
+    font-size: 0.825rem;
+    line-height: 1.38;
+  }
+
+  .fleet-showcase_highlights {
+    gap: 0.45rem;
+    padding-top: 0.5rem;
+  }
+
+  .fleet-showcase_highlight .surface-card_text {
+    font-size: 0.8rem;
+    line-height: 1.35;
+  }
+
+  .fleet-showcase_hint {
+    left: 0.75rem;
+    right: auto;
+    bottom: 0.65rem;
+    font-size: 0.68rem;
+  }
+
+  .fleet-showcase_live {
+    top: 0.65rem;
+    left: 0.75rem;
+  }
+}

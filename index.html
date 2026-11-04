@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>OnLink | Gestão de frota via satélite para máquinas pesadas</title>
+  <meta name="description" content="Monitoramento com conectividade via satélite para máquinas pesadas. Gerencie sua frota de qualquer marca, em qualquer lugar, em tempo real. OnLink — Powered by OnBoard.">
+  <meta name="keywords" content="telemetria satelital, gestão de frota, monitoramento de máquinas pesadas, rastreamento via satélite, mineração, agronegócio, construção pesada, OnLink, OnBoard">
+  <meta name="author" content="OnBoard">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#212021">
+  <link rel="canonical" href="https://onlink.com.br/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="OnLink">
+  <meta property="og:url" content="https://onlink.com.br/">
+  <meta property="og:title" content="OnLink | Conectamos máquinas, entregamos decisões.">
+  <meta property="og:description" content="Quando o sinal de celular para, sua operação não para. Telemetria via satélite para frotas de máquinas pesadas multimarcas.">
+  <meta property="og:image" content="https://onlink.com.br/assets/img/brand/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Logo OnLink">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="OnLink | Conectamos máquinas, entregamos decisões.">
+  <meta name="twitter:description" content="Telemetria via satélite e monitoramento em tempo real para máquinas pesadas. Powered by OnBoard.">
+  <meta name="twitter:image" content="https://onlink.com.br/assets/img/brand/og-image.png">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/brand/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/brand/apple-touch-icon.png">
+
+  <link rel="preload" href="assets/fonts/inter/Inter-Medium.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/roboto/Roboto-Regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="assets/css/base/fonts.css">
+  <link rel="stylesheet" href="assets/css/base/tokens.css">
+  <link rel="stylesheet" href="assets/css/base/reset.css">
+  <link rel="stylesheet" href="assets/css/base/typography.css">
+  <link rel="stylesheet" href="assets/css/layout/layout.css">
+  <link rel="stylesheet" href="assets/css/layout/utilities.css">
+  <link rel="stylesheet" href="assets/css/layout/globe-stage.css">
+  <link rel="stylesheet" href="assets/css/layout/scroll-panels.css">
+  <link rel="stylesheet" href="assets/css/components/buttons.css">
+  <link rel="stylesheet" href="assets/css/components/surfaces.css">
+  <link rel="stylesheet" href="assets/css/components/content.css">
+  <link rel="stylesheet" href="assets/css/components/brand.css">
+  <link rel="stylesheet" href="assets/css/components/banner.css">
+  <link rel="stylesheet" href="assets/css/components/navbar.css">
+  <link rel="stylesheet" href="assets/css/components/hero-globe.css">
+  <link rel="stylesheet" href="assets/css/components/globe-markers.css">
+  <link rel="stylesheet" href="assets/css/components/impact.css">
+  <link rel="stylesheet" href="assets/css/components/fleet.css">
+  <link rel="stylesheet" href="assets/css/components/fleet-showcase.css">
+  <link rel="stylesheet" href="assets/css/components/audience.css">
+  <link rel="stylesheet" href="assets/css/components/app.css">
+  <link rel="stylesheet" href="assets/css/components/industries.css">
+  <link rel="stylesheet" href="assets/css/components/authority.css">
+  <link rel="stylesheet" href="assets/css/components/testimonials.css">
+  <link rel="stylesheet" href="assets/css/components/faq.css">
+  <link rel="stylesheet" href="assets/css/components/cta.css">
+  <link rel="stylesheet" href="assets/css/components/footer.css">
+  <link rel="stylesheet" href="assets/vendor/aos/aos.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "OnLink",
+    "description": "Gestão de frota via telemetria satelital e monitoramento em tempo real para máquinas pesadas.",
+    "url": "https://onlink.com.br/",
+    "logo": "https://onlink.com.br/assets/img/brand/onlink-logo.png",
+    "email": "contato@onlink.com.br",
+    "slogan": "Conectamos máquinas, entregamos decisões.",
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "OnBoard",
+      "taxID": "46.885.382/0001-89"
+    }
+  }
+  </script>
+
+  <script src="assets/vendor/aos/aos.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/navbar.js" defer></script>
+  <script src="assets/js/scroll-anchors.js" defer></script>
+  <script src="assets/js/faq.js" defer></script>
+  <script src="assets/js/globe-loader.js" defer></script>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./assets/vendor/three/three.module.min.js",
+      "three/examples/jsm/environments/RoomEnvironment.js": "./assets/vendor/three/addons/environments/RoomEnvironment.js"
+    }
+  }
+  </script>
+  <script type="module" src="assets/js/fleet-showcase/index.js"></script>
+</head>
+<body class="globe-page">
+  <div class="page-wrapper">
+
+    <!-- Navbar — estrutura .navbar_component exigida pelo bundle (Jo): .nav__bg, .page-padding.is-navbar, .navbar_menu-button, .w-nav-overlay -->
+    <div class="navbar_component clickable-off w-nav" data-collapse="medium" role="banner">
+      <div class="container-large footer">
+        <div class="page-padding is-navbar top">
+          <div class="nav__bg-wrapper"><div class="nav__bg frosty"></div></div>
+          <div class="navbar_inner">
+            <a href="#inicio" class="navbar_logo clickable-on w-nav-brand" aria-label="OnLink — página inicial">
+              <div class="brand-wrapper">
+                <div class="skylo-symbol w-embed">
+                  <svg width="100%" height="100%" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <circle cx="13" cy="19" r="9.5" stroke="url(#onlink-glow)" stroke-width="5"/>
+                    <path d="M28.5 29V10.5M28.5 18a8 8 0 0 1 16 0v11" stroke="url(#onlink-glow)" stroke-width="5"/>
+                    <path d="M5 37q20 13 40 0" stroke="url(#onlink-glow)" stroke-width="3.5" stroke-linecap="round"/>
+                    <defs>
+                      <linearGradient id="onlink-glow" x1="0" y1="0" x2="50" y2="0" gradientUnits="userSpaceOnUse">
+                        <stop offset="0.04" stop-color="#19F3FF"/>
+                        <stop offset="0.31" stop-color="#12F6BC"/>
+                        <stop offset="0.61" stop-color="#0BFA6F"/>
+                        <stop offset="1" stop-color="#00FF00"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+                <div class="skylo-wordmark w-embed">
+                  <svg width="100%" height="100%" viewBox="0 0 64 34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <text x="0" y="25" fill="currentColor" font-family="Inter, Arial, sans-serif" font-size="27" font-weight="600" letter-spacing="-0.5">Link</text>
+                  </svg>
+                </div>
+              </div>
+            </a>
+
+            <nav role="navigation" id="navbar-menu" class="navbar_menu clickable-on w-nav-menu" aria-label="Navegação principal">
+              <a href="#inicio" class="navbar_link nav_top w-nav-link">Início</a>
+              <a href="#como-funciona" class="navbar_link nav_top w-nav-link">Como Funciona</a>
+              <a href="#beneficios" class="navbar_link nav_top w-nav-link">Benefícios</a>
+              <a href="#frota" class="navbar_link nav_top w-nav-link">Frota</a>
+              <a href="#setores" class="navbar_link nav_top w-nav-link">Setores</a>
+              <a href="#app" class="navbar_link nav_top w-nav-link">App</a>
+              <a href="#depoimentos" class="navbar_link nav_top w-nav-link">Depoimentos</a>
+              <a href="#faq" class="navbar_link nav_top w-nav-link">FAQ</a>
+              <div class="navbar_menu-buttons new">
+                <div class="navbar_button-wrapper">
+                  <div class="button-magnetic-wrapper">
+                    <a href="#app" class="button-outline-green is-nav w-button">Baixar App</a>
+                  </div>
+                </div>
+                <div class="navbar_button-wrapper">
+                  <div class="button-magnetic-wrapper">
+                    <a href="mailto:contato@onlink.com.br?subject=Solicita%C3%A7%C3%A3o%20de%20apresenta%C3%A7%C3%A3o%20OnLink" class="button is-nav w-button">Solicite uma Apresentação</a>
+                  </div>
+                </div>
+              </div>
+            </nav>
+
+            <button type="button" class="navbar_menu-button clickable-on w-nav-button" aria-label="Abrir menu" aria-controls="navbar-menu" aria-expanded="false">
+              <span class="menu-icon">
+                <span class="menu-icon1_line-top"></span>
+                <span class="menu-icon1_line-middle"><span class="menu-icon_line-middle-inner"></span></span>
+                <span class="menu-icon1_line-bottom"></span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="w-nav-overlay"></div>
+    </div>
+
+    <main class="home-page-wrapper">
+
+      <div class="gl-canvas" aria-hidden="true"></div>
+
+      <!-- Primeira dobra — .globe-step-0-section (centraliza a câmera e some no GLOBE-STEP-1) + .section-globe;
+           .globe-markers são projetados pelo WebGL via data-lat/data-lng -->
+      <section class="section-globe globe-step-0-section" id="inicio" aria-labelledby="hero-title">
+        <div class="home-interactive-globes_inner">
+          <div class="interactive-globe-1-wrapper">
+            <div class="container-large">
+              <div class="page-padding">
+                <div class="interactive-globes_component">
+                  <div class="interactive-globes-text">
+                    <p class="skylo-label">Conectamos máquinas, entregamos decisões.</p>
+                    <h1 id="hero-title" class="heading-xlarge">Quando o sinal para, sua frota <span>não para.</span></h1>
+                    <div class="interactive-globes_paragraph-wrapper">
+                      <p class="interactive-globes_paragraph">Monitoramento com conectividade via satélite para máquinas pesadas. Gerencie sua frota de qualquer marca em qualquer lugar. Veja o que está acontecendo em tempo real e tome decisões com segurança.</p>
+                    </div>
+                    <div class="interactive-globes_button-wrapper">
+                      <div class="button-magnetic-wrapper">
+                        <a href="mailto:contato@onlink.com.br?subject=Solicita%C3%A7%C3%A3o%20de%20apresenta%C3%A7%C3%A3o%20OnLink" class="button w-button">Solicite uma Apresentação</a>
+                      </div>
+                      <div class="button-magnetic-wrapper">
+                        <a href="#como-funciona" class="button-outline-green w-button">Entenda Como Funciona</a>
+                      </div>
+                    </div>
+                    <p class="interactive-globes_powered">Powered by <strong>OnBoard</strong></p>
+                    <div class="show-mobile-landscape">
+                      <a href="#como-funciona" class="interactive-globes_next clickable-on w-inline-block" aria-label="Avançar para a próxima seção">
+                        <svg class="interactive-globes_next-image" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="globe-markers">
+          <div class="globe-marker" data-lat="-6.07" data-lng="-50.17">
+            <div class="globe-marker-inner">
+              <div class="globe-marker-infobox">
+                <div class="globe-marker-infobox-inner">
+                  <div class="globe-marker-infobox-text">
+                    <h3>Mineração e Obras</h3>
+                    <p>Monitoramento contínuo via satélite mesmo em cavas e serras sem sinal de celular</p>
+                  </div>
+                  <div class="globe-marker-infobox-img"><img src="assets/img/globe/mining.svg" loading="lazy" alt=""></div>
+                </div>
+              </div>
+              <div class="globe-marker-icon"><i>+</i></div>
+            </div>
+          </div>
+          <div class="globe-marker" data-lat="-23.55" data-lng="-46.63">
+            <div class="globe-marker-inner">
+              <div class="globe-marker-infobox">
+                <div class="globe-marker-infobox-inner">
+                  <div class="globe-marker-infobox-text">
+                    <h3>Frota Multimarcas</h3>
+                    <p>Gerencie +150 modelos de escavadeiras, tratores e caminhões em uma só plataforma</p>
+                  </div>
+                  <div class="globe-marker-infobox-img"><img src="assets/img/globe/fleet.svg" loading="lazy" alt=""></div>
+                </div>
+              </div>
+              <div class="globe-marker-icon"><i>+</i></div>
+            </div>
+          </div>
+          <div class="globe-marker" data-lat="-12.55" data-lng="-55.72">
+            <div class="globe-marker-inner">
+              <div class="globe-marker-infobox">
+                <div class="globe-marker-infobox-inner">
+                  <div class="globe-marker-infobox-text">
+                    <h3>Uso Real e Eficiência</h3>
+                    <p>Saiba exatamente quantas horas a máquina trabalhou e quanto consumiu no campo</p>
+                  </div>
+                  <div class="globe-marker-infobox-img"><img src="assets/img/globe/efficiency.svg" loading="lazy" alt=""></div>
+                </div>
+              </div>
+              <div class="globe-marker-icon"><i>+</i></div>
+            </div>
+          </div>
+          <div class="globe-marker" data-lat="-19.62" data-lng="-43.23">
+            <div class="globe-marker-inner">
+              <div class="globe-marker-infobox">
+                <div class="globe-marker-infobox-inner">
+                  <div class="globe-marker-infobox-text">
+                    <h3>Alertas Inteligentes</h3>
+                    <p>Receba notificações de falhas, desvios e forçamento antes que virem prejuízo</p>
+                  </div>
+                  <div class="globe-marker-infobox-img"><img src="assets/img/globe/alerts.svg" loading="lazy" alt=""></div>
+                </div>
+              </div>
+              <div class="globe-marker-icon"><i>+</i></div>
+            </div>
+          </div>
+          <div class="globe-marker" data-lat="-30.03" data-lng="-51.23">
+            <div class="globe-marker-inner">
+              <div class="globe-marker-infobox">
+                <div class="globe-marker-infobox-inner">
+                  <div class="globe-marker-infobox-text">
+                    <h3>Integração ERP</h3>
+                    <p>API aberta, dashboards sob medida e relatórios em PDF ou planilha sem retrabalho</p>
+                  </div>
+                  <div class="globe-marker-infobox-img"><img src="assets/img/globe/erp.svg" loading="lazy" alt=""></div>
+                </div>
+              </div>
+              <div class="globe-marker-icon"><i>+</i></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scroll virtual (bundle skylo-globe: [data-scroll] > [data-scroll-item]); o snap avança um item por gesto,
+           então cada .scroll-panel tem exatamente a altura da tela.
+           O id GLOBE-STEP-1 dispara o fade do hero/globo; sem a classe .globe-step-1, que o bundle deixa com opacity 0.
+           Só adicione .globe-step-11/.globe-switch/.globe-text-* junto com as seções fixas que o bundle espera para eles. -->
+      <div data-scroll data-scroll-snap>
+        <div class="section-step globe-step-0" data-scroll-item="GLOBE-STEP-0"></div>
+
+        <section id="como-funciona" aria-labelledby="impact-title">
+          <div class="scroll-panel is-impact is-fade-in" data-scroll-item="GLOBE-STEP-1">
+            <div class="section-inner">
+              <div class="container-large">
+                <div class="page-padding">
+                  <div class="impact_component">
+                    <div class="skylo-label_wrapper" data-aos="fade-up"><p class="skylo-label">OnLink é</p></div>
+                    <h2 id="impact-title" class="heading-large white impact_heading" data-aos="fade-up" data-aos-delay="100">A camada satelital que conecta toda a sua operação — <span class="text-color-green">sem zonas de sombra, sem planilhas paralelas.</span></h2>
+                    <div class="skylo-is_paragraph-wrapper" data-aos="fade-up" data-aos-delay="200">
+                      <p class="skylo-is_paragraph">Mesmo sem sinal de celular 4G, você continua no controle com coleta automática via satélite em tempo real.</p>
+                    </div>
+                    <ul class="impact-stats" aria-label="OnLink em números">
+                      <li class="impact-stats_item" data-aos="fade-up" data-aos-delay="200">
+                        <p class="heading-kpi impact-stats_value">90<span class="heading-kpi-small">k+</span></p>
+                        <p class="skylo-label">Máquinas Monitoradas</p>
+                      </li>
+                      <li class="impact-stats_item" data-aos="fade-up" data-aos-delay="300">
+                        <p class="heading-kpi impact-stats_value">150<span class="heading-kpi-small">+</span></p>
+                        <p class="skylo-label">Modelos Integrados</p>
+                      </li>
+                      <li class="impact-stats_item" data-aos="fade-up" data-aos-delay="400">
+                        <p class="heading-kpi impact-stats_value">20<span class="heading-kpi-small">%</span></p>
+                        <p class="skylo-label">Economia Comprovada</p>
+                      </li>
+                      <li class="impact-stats_item" data-aos="fade-up" data-aos-delay="500">
+                        <p class="heading-kpi impact-stats_value">24<span class="heading-kpi-small">/7</span></p>
+                        <p class="skylo-label">Monitoramento Ativo</p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="scroll-panel is-process" data-scroll-item="PROCESS-STEP">
+            <div class="section-inner">
+              <div class="container-large">
+                <div class="page-padding">
+                  <div class="process_header">
+                    <div class="skylo-label_wrapper" data-aos="fade-up"><p class="skylo-label">Como funciona</p></div>
+                    <h3 class="heading-large white" data-aos="fade-up" data-aos-delay="100">Instala. Conecta. Gerencia. <span class="text-color-green">Simples assim.</span></h3>
+                  </div>
+                  <ol class="process-steps surface-rail">
+                    <li data-aos="fade-up" data-aos-delay="200">
+                      <article class="process-step surface-frosty">
+                        <div class="process-step_top">
+                          <span class="process-step_index heading-kpi-small outline" aria-hidden="true">01</span>
+                          <span class="process-step_tag">30 a 60 min</span>
+                        </div>
+                        <h4 class="surface-card_title">Instalação Rápida</h4>
+                        <p class="surface-card_text">Rápida, sem dor de cabeça e sem interferir na operação. Compatível com qualquer máquina, de equipamentos pesados de mineração a caminhões fora de estrada no alto da serra.</p>
+                      </article>
+                    </li>
+                    <li data-aos="fade-up" data-aos-delay="300">
+                      <article class="process-step surface-frosty">
+                        <div class="process-step_top">
+                          <span class="process-step_index heading-kpi-small outline" aria-hidden="true">02</span>
+                          <span class="process-step_tag">Sem depender de 4G</span>
+                        </div>
+                        <h4 class="surface-card_title">Dados via Satélite</h4>
+                        <p class="surface-card_text">Comunicação satelital contínua onde redes móveis não chegam. Sem zonas de sombra.</p>
+                      </article>
+                    </li>
+                    <li data-aos="fade-up" data-aos-delay="400">
+                      <article class="process-step surface-frosty">
+                        <div class="process-step_top">
+                          <span class="process-step_index heading-kpi-small outline" aria-hidden="true">03</span>
+                          <span class="process-step_tag">API aberta</span>
+                        </div>
+                        <h4 class="surface-card_title">Comunica com seu Sistema</h4>
+                        <p class="surface-card_text">Integração direta ao ERP existente via API aberta, sem planilhas paralelas.</p>
+                      </article>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="beneficios" aria-labelledby="fleet-title">
+          <div class="scroll-panel is-fleet" data-scroll-item="FLEET-STEP">
+            <div class="section-inner">
+              <div class="container-large">
+                <div class="page-padding">
+                  <div class="fleet_component">
+                    <div class="skylo-is_text">
+                      <div class="skylo-label_wrapper" data-aos="fade-up"><p class="skylo-label">100% Compatível · Multimarcas</p></div>
+                      <h2 id="fleet-title" class="heading-large white" data-aos="fade-up" data-aos-delay="100">Gestão de frota que <span class="text-color-green">impacta.</span></h2>
+                      <div class="skylo-is_paragraph-wrapper" data-aos="fade-up" data-aos-delay="200">
+                        <p class="skylo-is_paragraph is-satellite">Gerencie escavadeiras, tratores, caminhões e empilhadeiras de +150 modelos em uma única plataforma universal.</p>
+                      </div>
+                      <div class="skylo-is_button-wrapper" data-aos="fade-up" data-aos-delay="300">
+                        <div class="button-terciary-magnetic-wrapper">
+                          <a href="mailto:contato@onlink.com.br?subject=Solicita%C3%A7%C3%A3o%20de%20apresenta%C3%A7%C3%A3o%20OnLink" class="text-link w-inline-block">
+                            <div class="text-link-text">Solicite uma Apresentação</div>
+                            <div class="text-link-icon w-embed">
+                              <svg width="100%" height="100%" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.3335 8.00004H12.6668M12.6668 8.00004L8.00016 3.33337M12.6668 8.00004L8.00016 12.6667" stroke="currentColor" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+
+                    <ul class="fleet-cards surface-rail">
+                      <li data-aos="fade-up" data-aos-delay="200">
+                        <article class="fleet-card surface-frosty">
+                          <div class="fleet-card_icon"><img src="assets/img/globe/fleet.svg" alt=""></div>
+                          <h3 class="surface-card_title">Controle em Tempo Real</h3>
+                          <p class="surface-card_text">Transmissão via satélite direto para o celular ou computador. Localização, status e alertas em segundos.</p>
+                        </article>
+                      </li>
+                      <li data-aos="fade-up" data-aos-delay="300">
+                        <article class="fleet-card surface-frosty">
+                          <div class="fleet-card_icon"><img src="assets/img/globe/efficiency.svg" alt=""></div>
+                          <h3 class="surface-card_title">Uso Real e Eficiência Operacional</h3>
+                          <p class="surface-card_text">Horas trabalhadas, consumo e modo de uso no campo para evitar desperdícios com dados confiáveis.</p>
+                        </article>
+                      </li>
+                      <li data-aos="fade-up" data-aos-delay="400">
+                        <article class="fleet-card surface-frosty">
+                          <div class="fleet-card_icon"><img src="assets/img/globe/alerts.svg" alt=""></div>
+                          <h3 class="surface-card_title">Alertas Inteligentes</h3>
+                          <p class="surface-card_text">Leitura direta da máquina que antecipa problemas mecânicos e operacionais.</p>
+                        </article>
+                      </li>
+                      <li data-aos="fade-up" data-aos-delay="500">
+                        <article class="fleet-card surface-frosty">
+                          <div class="fleet-card_icon"><img src="assets/img/globe/erp.svg" alt=""></div>
+                          <h3 class="surface-card_title">Relatórios Exportáveis</h3>
+                          <p class="surface-card_text">Prontos para auditoria, controle interno ou prestação de contas em PDF ou planilha.</p>
+                        </article>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="frota" aria-labelledby="fleet-showcase-title">
+          <div class="fleet-showcase-track js-fleet-showcase" data-scroll-item="FLEET-SHOWCASE-STEP" data-active-sector="construction" data-active-machine="construction" data-active-index="0">
+            <div class="fleet-showcase-sticky scroll-panel is-fleet-showcase" data-showcase-sticky>
+              <div class="section-inner">
+                <div class="container-large">
+                  <div class="page-padding">
+                    <div class="fleet-showcase">
+                      <header class="fleet-showcase_header">
+                        <div class="fleet-showcase_header-top" data-aos="fade-up">
+                          <p class="skylo-label">Telemetria Satelital Embarcada &middot; Visão 360° por Setor</p>
+                          <p class="skylo-label fleet-showcase_scroll-cue">Role para explorar os 4 setores</p>
+                        </div>
+
+                        <nav class="fleet-showcase_stepper" aria-label="Setores atendidos pela telemetria satelital" data-aos="fade-up" data-aos-delay="100">
+                          <ul class="fleet-showcase_steps" role="tablist" aria-label="Selecionar setor produtivo">
+                            <li>
+                              <button type="button" class="fleet-showcase_step is-active" id="sector-tab-construction" data-sector-step="0" role="tab" aria-selected="true" aria-current="step" aria-controls="fleet-showcase-stage">
+                                <span class="fleet-showcase_step-num">01</span>
+                                <span class="fleet-showcase_step-label">Construção</span>
+                              </button>
+                            </li>
+                            <li>
+                              <button type="button" class="fleet-showcase_step" id="sector-tab-mining" data-sector-step="1" role="tab" aria-selected="false" aria-current="false" aria-controls="fleet-showcase-stage" tabindex="-1">
+                                <span class="fleet-showcase_step-num">02</span>
+                                <span class="fleet-showcase_step-label">Mineração</span>
+                              </button>
+                            </li>
+                            <li>
+                              <button type="button" class="fleet-showcase_step" id="sector-tab-agro" data-sector-step="2" role="tab" aria-selected="false" aria-current="false" aria-controls="fleet-showcase-stage" tabindex="-1">
+                                <span class="fleet-showcase_step-num">03</span>
+                                <span class="fleet-showcase_step-label">Agro</span>
+                              </button>
+                            </li>
+                            <li>
+                              <button type="button" class="fleet-showcase_step" id="sector-tab-offshore" data-sector-step="3" role="tab" aria-selected="false" aria-current="false" aria-controls="fleet-showcase-stage" tabindex="-1">
+                                <span class="fleet-showcase_step-num">04</span>
+                                <span class="fleet-showcase_step-label">OffShore</span>
+                              </button>
+                            </li>
+                          </ul>
+                          <div class="fleet-showcase_progress" data-showcase-progress role="progressbar" aria-label="Progresso da seção de setores" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                            <div class="fleet-showcase_progress-bar" data-showcase-progress-fill></div>
+                          </div>
+                        </nav>
+                      </header>
+
+                      <div class="fleet-showcase_layout">
+                        <aside class="fleet-showcase_panel">
+                          <article class="fleet-showcase_telemetry surface-frosty" data-sector-panel data-aos="fade-up" data-aos-delay="200" aria-live="polite">
+                            <div class="fleet-showcase_telemetry-top">
+                              <span class="process-step_tag" data-sector-tag>Construção Pesada &amp; Infraestrutura</span>
+                              <span class="skylo-label fleet-showcase_counter" data-sector-counter>Setor 01 / 04</span>
+                            </div>
+
+                            <h2 id="fleet-showcase-title" class="heading-large white fleet-showcase_sector-title" data-sector-title>Controle total da frota em obras remotas e sem cobertura celular</h2>
+
+                            <p class="skylo-is_paragraph fleet-showcase_sector-desc" data-sector-description>Monitore escavadeiras, tratores e equipamentos de linha amarela em tempo real, mesmo em canteiros isolados, aberturas de rodovias ou barragens.</p>
+
+                            <ul class="fleet-showcase_highlights" data-sector-highlights aria-label="Destaques do setor">
+                              <li class="fleet-showcase_highlight">
+                                <span class="fleet-showcase_highlight-dot" aria-hidden="true"></span>
+                                <p class="surface-card_text">Horímetro preciso e controle de ociosidade do motor em tempo real.</p>
+                              </li>
+                              <li class="fleet-showcase_highlight">
+                                <span class="fleet-showcase_highlight-dot" aria-hidden="true"></span>
+                                <p class="surface-card_text">Alertas imediatos de falhas e diagnósticos de engenharia embarcada.</p>
+                              </li>
+                              <li class="fleet-showcase_highlight">
+                                <span class="fleet-showcase_highlight-dot" aria-hidden="true"></span>
+                                <p class="surface-card_text">Prevenção contra uso não autorizado e controle de perímetro (Geofencing).</p>
+                              </li>
+                            </ul>
+
+                            <div class="fleet-showcase_cta">
+                              <a href="mailto:contato@onlink.com.br?subject=Solicita%C3%A7%C3%A3o%20de%20apresenta%C3%A7%C3%A3o%20OnLink" class="text-link w-inline-block">
+                                <div class="text-link-text">Solicite uma Apresentação</div>
+                                <div class="text-link-icon w-embed">
+                                  <svg width="100%" height="100%" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.3335 8.00004H12.6668M12.6668 8.00004L8.00016 3.33337M12.6668 8.00004L8.00016 12.6667" stroke="currentColor" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </div>
+                              </a>
+                            </div>
+                          </article>
+                        </aside>
+
+                        <div class="fleet-showcase_stage surface-frosty" id="fleet-showcase-stage" role="tabpanel" aria-labelledby="sector-tab-construction">
+                          <div class="fleet-showcase_canvas" data-showcase-stage></div>
+                          <span class="process-step_tag fleet-showcase_live" data-showcase-live>Satélite 24/7 &middot; Construção</span>
+                          <p class="fleet-showcase_hint">Arraste para girar em 360° &middot; Role para alternar setores</p>
+                          <div class="fleet-showcase_loading" data-showcase-loading hidden aria-live="polite" aria-busy="false">
+                            <span class="fleet-showcase_spinner" aria-hidden="true"></span>
+                            <p class="skylo-label" data-showcase-loading-label>Carregando modelo</p>
+                          </div>
+                          <p class="fleet-showcase_error surface-card_text" data-showcase-error hidden></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="publico" aria-labelledby="audience-title">
+          <div class="scroll-panel is-audience" data-scroll-item="AUDIENCE-STEP">
+            <div class="section-inner">
+              <div class="container-large">
+                <div class="page-padding">
+                  <div class="audience_header">
+                    <div class="skylo-label_wrapper" data-aos="fade-up"><p class="skylo-label">Dupla visão</p></div>
+                    <h2 id="audience-title" class="heading-large white" data-aos="fade-up" data-aos-delay="100">Para quem está no campo e para quem <span class="text-color-green">toma as decisões.</span></h2>
+                    <div class="skylo-is_paragraph-wrapper" data-aos="fade-up" data-aos-delay="200">
+                      <p class="skylo-is_paragraph">A mesma plataforma serve a operação no chão da obra e o escritório que precisa de ROI, vida útil e relatórios executivos.</p>
+                    </div>
+                  </div>
+
+                  <div class="audience-grid surface-rail">
+                    <article class="audience-card surface-frosty" data-aos="fade-up" data-aos-delay="200">
+                      <div class="audience-card_top">
+                        <h3 class="audience-card_title">Para quem está na operação</h3>
+                        <span class="audience-card_tag">Campo</span>
+                      </div>
+                      <ul class="audience-card_list">
+                        <li class="audience-card_item">
+                          <h4 class="surface-card_title">Monitoramento em tempo real</h4>
+                          <p class="surface-card_text">Localização, status e alertas instantâneos no celular.</p>
+                        </li>
+                        <li class="audience-card_item">
+                          <h4 class="surface-card_title">Manutenção proativa</h4>
+                          <p class="surface-card_text">Alertas antecipados de falhas e programação automática de serviços.</p>
+                        </li>
+                        <li class="audience-card_item">
+                          <h4 class="surface-card_title">Controle de produtividade</h4>
+                          <p class="surface-card_text">Uso real de cada máquina e identificação de ociosidade.</p>
+                        </li>
+                        <li class="audience-card_item">
+                          <h4 class="surface-card_title">Segurança reforçada</h4>
+                          <p class="surface-card_text">Monitoramento de comportamento e investigação de incidentes.</p>
+                        </li>
+                      </ul>
+                    </article>
+
+                    <article class="audience-card surface-frosty" data-aos="fade-up" data-aos-delay="300">
+                      <div class="audience-card_top">
+                        <h3 class="audience-card_title">Para quem toma as decisões</h3>
+                        <span class="audience-card_tag">Escritório</span>
+                      </div>
+                      <ul class="audience-card_list">
+                        <li class="audience-card_item">
+                          <h4 class="surface-card_title">ROI comprovado de até 20%</h4>
+                          <p class="surface-card_text">Economia em combustível, manutenção e seguros — retorno em poucos meses.</p>
+                        </li>
+                        <li class="audience-card_item">
+                          <h4 class="surface-card_title">Aumento da vida útil</h4>
+                          <p class="surface-card_text">Gestão proativa que prolonga a durabilidade dos ativos.</p>
+                        </li>
+                        <li class="audience-card_item">
+                          <h4 class="surface-card_title">Vantagem competitiva</h4>
+                          <p class="surface-card_text">Eficiência operacional traduzida em competitividade.</p>
+                        </li>
+                        <li class="audience-card_item">
+                          <h4 class="surface-card_title">Relatórios executivos</h4>
+                          <p class="surface-card_text">Dados precisos para embasar decisões estratégicas.</p>
+                        </li>
+                      </ul>
+                    </article>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="app" aria-labelledby="app-title">
+          <div class="scroll-panel is-app" data-scroll-item="APP-STEP">
+            <div class="section-inner">
+              <div class="container-large">
+                <div class="page-padding">
+                  <div class="app_component" data-app-showcase>
+                    <div class="skylo-is_text">
+                      <div class="skylo-label_wrapper" data-aos="fade-up">
+                        <p class="skylo-label">App OnLink &middot; iOS &amp; Android</p>
+                      </div>
+                      <h2 id="app-title" class="heading-large white" data-aos="fade-up" data-aos-delay="100">Assuma o controle da sua <span class="text-color-green">frota.</span></h2>
+                      <div class="skylo-is_paragraph-wrapper" data-aos="fade-up" data-aos-delay="200">
+                        <p class="skylo-is_paragraph">Com o app da OnLink, você vê tudo direto do celular: status, localização, alertas e relatórios. iOS e Android.</p>
+                      </div>
+
+                      <ul class="app-highlights" data-aos="fade-up" data-aos-delay="250" aria-label="Destaques do aplicativo">
+                        <li class="app-highlight">
+                          <span class="app-highlight_dot" aria-hidden="true"></span>
+                          <span class="surface-card_text">Sincronização satelital automática mesmo em zonas sem 4G</span>
+                        </li>
+                        <li class="app-highlight">
+                          <span class="app-highlight_dot" aria-hidden="true"></span>
+                          <span class="surface-card_text">Alertas críticos de manutenção e horímetro em tempo real</span>
+                        </li>
+                      </ul>
+
+                      <div class="app-store-row" data-aos="fade-up" data-aos-delay="300">
+                        <a href="#app" class="button app-store-btn w-button">
+                          <svg class="app-store-btn_icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                            <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516s1.52.087 2.475-1.258.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z"/>
+                          </svg>
+                          <span>Download na App Store</span>
+                        </a>
+                        <a href="#app" class="button-outline-green app-store-btn w-button">
+                          <svg class="app-store-btn_icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                            <path d="M14.222 9.374c1.037-.61 1.037-2.137 0-2.748L11.528 5.04 8.32 8l3.207 2.96 2.694-1.586Zm-3.595 2.116L7.583 8.68 1.03 14.73c.201 1.029 1.36 1.61 2.303 1.055l7.294-4.295ZM1 13.396V2.603L6.846 8 1 13.396ZM1.03 1.27l6.553 6.05 3.044-2.81L3.333.215C2.39-.341 1.231.24 1.03 1.27Z"/>
+                          </svg>
+                          <span>Disponível no Google Play</span>
+                        </a>
+                      </div>
+                    </div>
+
+                    <ul class="app-pillars surface-rail" role="list">
+                      <li data-aos="fade-up" data-aos-delay="200">
+                        <article class="app-pillar surface-frosty is-active" data-app-pillar="0" tabindex="0">
+                          <div class="app-pillar_top">
+                            <span class="app-pillar_index outline" aria-hidden="true">01</span>
+                            <span class="process-step_tag">Visão Direta</span>
+                          </div>
+                          <h3 class="surface-card_title">Interface Intuitiva</h3>
+                          <p class="surface-card_text">Fácil mesmo para quem não é técnico — você entra e já vê o que precisa.</p>
+                        </article>
+                      </li>
+                      <li data-aos="fade-up" data-aos-delay="300">
+                        <article class="app-pillar surface-frosty" data-app-pillar="1" tabindex="0">
+                          <div class="app-pillar_top">
+                            <span class="app-pillar_index outline" aria-hidden="true">02</span>
+                            <span class="process-step_tag">Satélite 24/7</span>
+                          </div>
+                          <h3 class="surface-card_title">Na Hora, Onde Estiver</h3>
+                          <p class="surface-card_text">Status, localização e alertas no celular, no campo ou no escritório.</p>
+                        </article>
+                      </li>
+                      <li data-aos="fade-up" data-aos-delay="400">
+                        <article class="app-pillar surface-frosty" data-app-pillar="2" tabindex="0">
+                          <div class="app-pillar_top">
+                            <span class="app-pillar_index outline" aria-hidden="true">03</span>
+                            <span class="process-step_tag">Dados Protegidos</span>
+                          </div>
+                          <h3 class="surface-card_title">Seguro e Confiável</h3>
+                          <p class="surface-card_text">Criptografia de ponta para proteger a operação e os dados da frota.</p>
+                        </article>
+                      </li>
+                    </ul>
+
+                    <div class="app-phone" data-aos="fade-up" data-aos-delay="300" aria-hidden="true">
+                      <img src="assets/img/app/phone.png" alt="">
+                      <div class="app-phone_screen">
+                        <div class="app-phone_statusbar">
+                          <span>09:41</span>
+                          <span class="app-phone_camera"></span>
+                          <span class="app-phone_signal">SAT &middot; 100%</span>
+                        </div>
+
+                        <div class="app-phone_header">
+                          <div class="app-phone_header-top">
+                            <p class="app-phone_brand">OnLink</p>
+                            <span class="app-phone_badge">
+                              <span class="app-phone_badge-dot"></span>
+                              Online
+                            </span>
+                          </div>
+                          <p class="app-phone_heading">Sua frota no celular</p>
+                        </div>
+
+                        <div class="app-phone_kpis">
+                          <div class="app-phone_kpi">
+                            <span class="app-phone_kpi-value">24</span>
+                            <span class="app-phone_kpi-label">Ativas</span>
+                          </div>
+                          <div class="app-phone_kpi">
+                            <span class="app-phone_kpi-value text-color-green">99.8%</span>
+                            <span class="app-phone_kpi-label">Sinal SAT</span>
+                          </div>
+                          <div class="app-phone_kpi">
+                            <span class="app-phone_kpi-value">0</span>
+                            <span class="app-phone_kpi-label">Paradas</span>
+                          </div>
+                        </div>
+
+                        <div class="app-phone_unit">
+                          <div class="app-phone_unit-top">
+                            <span class="app-phone_unit-name">CAT 320D &middot; #14</span>
+                            <span class="app-phone_unit-tag">Cava Norte</span>
+                          </div>
+                          <div class="app-phone_unit-bar">
+                            <span class="app-phone_unit-fill"></span>
+                          </div>
+                          <div class="app-phone_unit-meta">
+                            <span>Horímetro: 4.812h</span>
+                            <span class="text-color-green">18,4 L/h</span>
+                          </div>
+                        </div>
+
+                        <ul class="app-phone_list">
+                          <li class="is-active" data-app-item="0">
+                            <div class="app-phone_item-main">
+                              <strong>Status</strong>
+                              <span>Máquinas, alertas e uso real</span>
+                            </div>
+                            <span class="app-phone_item-pill">Ativo</span>
+                          </li>
+                          <li data-app-item="1">
+                            <div class="app-phone_item-main">
+                              <strong>Localização</strong>
+                              <span>Tempo real via satélite</span>
+                            </div>
+                            <span class="app-phone_item-pill">GPS/SAT</span>
+                          </li>
+                          <li data-app-item="2">
+                            <div class="app-phone_item-main">
+                              <strong>Relatórios</strong>
+                              <span>PDF ou planilha, sem retrabalho</span>
+                            </div>
+                            <span class="app-phone_item-pill">PDF/ERP</span>
+                          </li>
+                        </ul>
+
+                        <div class="app-phone_nav">
+                          <span class="is-active">Frota</span>
+                          <span>Mapa</span>
+                          <span>Alertas</span>
+                          <span>Relatórios</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="setores" aria-labelledby="industries-title">
+          <div class="scroll-panel is-industries" data-scroll-item="INDUSTRIES-STEP">
+            <div class="section-inner">
+              <div class="container-large">
+                <div class="page-padding">
+                  <div class="industries_header">
+                    <div class="skylo-label_wrapper" data-aos="fade-up"><p class="skylo-label">Descubra o seu caso de uso</p></div>
+                    <h2 id="industries-title" class="heading-large white" data-aos="fade-up" data-aos-delay="100">Conectividade sem fronteiras — <span class="text-color-green">para cada operação.</span></h2>
+                    <div class="skylo-is_paragraph-wrapper" data-aos="fade-up" data-aos-delay="200">
+                      <p class="skylo-is_paragraph">Da cava ao canteiro, do talhão à serra: a mesma telemetria satelital acompanha cada tipo de máquina pesada.</p>
+                    </div>
+                  </div>
+
+                  <div class="section-photos-images">
+                    <div class="section-photos-row section-photos-row-1">
+                      <div class="section-photos-row-inner">
+                        <div class="section-photos-image">
+                          <img src="assets/img/industries/construction.avif" alt="Construção Pesada" loading="lazy">
+                          <div class="section-photos-text">Construção Pesada</div>
+                        </div>
+                        <div class="section-photos-image">
+                          <img src="assets/img/industries/mining.avif" alt="Mineração" loading="lazy">
+                          <div class="section-photos-text">Mineração</div>
+                        </div>
+                        <div class="section-photos-image">
+                          <img src="assets/img/industries/agriculture.avif" alt="Agronegócio" loading="lazy">
+                          <div class="section-photos-text">Agronegócio</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="section-photos-row section-photos-row-2">
+                      <div class="section-photos-row-inner">
+                        <div class="section-photos-image">
+                          <img src="assets/img/industries/transport.avif" alt="Transporte Fora de Estrada" loading="lazy">
+                          <div class="section-photos-text">Transporte Fora de Estrada</div>
+                        </div>
+                        <div class="section-photos-image">
+                          <img src="assets/img/industries/infrastructure.avif" alt="Infraestrutura" loading="lazy">
+                          <div class="section-photos-text">Infraestrutura</div>
+                        </div>
+                        <div class="section-photos-image">
+                          <img src="assets/img/industries/energy.avif" alt="Energia" loading="lazy">
+                          <div class="section-photos-text">Energia</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="depoimentos" aria-labelledby="authority-title">
+          <div class="scroll-panel is-authority" data-scroll-item="AUTHORITY-STEP">
+            <div class="section-inner">
+              <div class="container-large">
+                <div class="page-padding">
+                  <div class="authority_header">
+                    <div class="skylo-label_wrapper" data-aos="fade-up"><p class="skylo-label">Autoridade brasileira</p></div>
+                    <h2 id="authority-title" class="heading-large white" data-aos="fade-up" data-aos-delay="100">Solução Brasileira — Confiança de quem conhece o <span class="text-color-green">chão da obra.</span></h2>
+                    <div class="skylo-is_paragraph-wrapper" data-aos="fade-up" data-aos-delay="200">
+                      <p class="skylo-is_paragraph">A OnLink é uma solução da OnBoard, empresa brasileira com mais de 5 anos de atuação no setor de máquinas e tecnologia. Tecnologia desenvolvida no Brasil para a realidade brasileira.</p>
+                    </div>
+                  </div>
+
+                  <ul class="authority-highlights surface-rail">
+                    <li data-aos="fade-up" data-aos-delay="200">
+                      <article class="authority-card surface-frosty">
+                        <p class="authority-card_value">+5 <span class="text-color-green">anos</span></p>
+                        <h3 class="surface-card_title">Atuação no setor</h3>
+                        <p class="surface-card_text">Time técnico que conhece máquinas pesadas na prática, no chão da obra.</p>
+                      </article>
+                    </li>
+                    <li data-aos="fade-up" data-aos-delay="300">
+                      <article class="authority-card surface-frosty">
+                        <p class="authority-card_value">BR</p>
+                        <h3 class="surface-card_title">Feita no Brasil</h3>
+                        <p class="surface-card_text">Tecnologia desenvolvida para a realidade brasileira — da cava à serra.</p>
+                      </article>
+                    </li>
+                    <li data-aos="fade-up" data-aos-delay="400">
+                      <article class="authority-card surface-frosty">
+                        <p class="authority-card_value">+10 <span class="text-color-green">mil</span></p>
+                        <h3 class="surface-card_title">Máquinas no país</h3>
+                        <p class="surface-card_text">Mais de 10 mil máquinas monitoradas em operação no Brasil.</p>
+                      </article>
+                    </li>
+                    <li data-aos="fade-up" data-aos-delay="500">
+                      <article class="authority-card surface-frosty">
+                        <p class="authority-card_value">API</p>
+                        <h3 class="surface-card_title">Integração sob medida</h3>
+                        <p class="surface-card_text">Conecta ao ERP e aos processos de cada frota, sem planilha paralela.</p>
+                      </article>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="scroll-panel is-reviews" data-scroll-item="REVIEWS-STEP">
+            <div class="section-inner">
+              <div class="container-large">
+                <div class="page-padding">
+                  <div class="reviews_header">
+                    <div class="reviews_header-copy">
+                      <div class="skylo-label_wrapper" data-aos="fade-up"><p class="skylo-label">Prova social</p></div>
+                      <h3 class="heading-large white" data-aos="fade-up" data-aos-delay="100">Quem opera no campo <span class="text-color-green">recomenda.</span></h3>
+                      <div class="skylo-is_paragraph-wrapper" data-aos="fade-up" data-aos-delay="150">
+                        <p class="skylo-is_paragraph">Relatos reais de gestores e equipes técnicas que monitoram frotas pesadas via satélite todos os dias.</p>
+                      </div>
+                    </div>
+                    <aside class="reviews-badge surface-frosty" data-aos="fade-up" data-aos-delay="200" aria-label="Avaliação 4,96 de 5 em mais de 100 frotas monitoradas">
+                      <p class="reviews-badge_score">4.96<span class="text-color-green">/5.0</span></p>
+                      <div class="reviews-badge_divider" aria-hidden="true"></div>
+                      <div class="reviews-badge_meta">
+                        <div class="reviews-stars" aria-hidden="true">
+                          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.15l1.76 3.57 3.94.57-2.85 2.78.67 3.92L8 10.14l-3.52 1.85.67-3.92-2.85-2.78 3.94-.57z"/></svg>
+                          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.15l1.76 3.57 3.94.57-2.85 2.78.67 3.92L8 10.14l-3.52 1.85.67-3.92-2.85-2.78 3.94-.57z"/></svg>
+                          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.15l1.76 3.57 3.94.57-2.85 2.78.67 3.92L8 10.14l-3.52 1.85.67-3.92-2.85-2.78 3.94-.57z"/></svg>
+                          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.15l1.76 3.57 3.94.57-2.85 2.78.67 3.92L8 10.14l-3.52 1.85.67-3.92-2.85-2.78 3.94-.57z"/></svg>
+                          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.15l1.76 3.57 3.94.57-2.85 2.78.67 3.92L8 10.14l-3.52 1.85.67-3.92-2.85-2.78 3.94-.57z"/></svg>
+                        </div>
+                        <p class="skylo-label">100+ Frotas monitoradas</p>
+                      </div>
+                    </aside>
+                  </div>
+
+                  <ul class="reviews-grid surface-rail">
+                    <li data-aos="fade-up" data-aos-delay="200">
+                      <figure class="reviews-card surface-frosty">
+                        <div class="reviews-card_top">
+                          <div class="reviews-stars" aria-label="Nota 5.0">
+                            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.15l1.76 3.57 3.94.57-2.85 2.78.67 3.92L8 10.14l-3.52 1.85.67-3.92-2.85-2.78 3.94-.57z"/></svg>
+                            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.15l1.76 3.57 3.94.57-2.85 2.78.67 3.92L8 10.14l-3.52 1.85.67-3.92-2.85-2.78 3.94-.57z"/></svg>
+                            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.15l1.76 3.57 3.94.57-2.85 2.78.67 3.92L8 10.14l-3.52 1.85.67-3.92-2.85-2.78 3.94-.57z"/></svg>
+                            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.15l1.76 3.57 3.94.57-2.85 2.78.67 3.92L8 10.14l-3.52 1.85.67-3.92-2.85-2.78 3.94-.57z"/></svg>
+                            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.15l1.76 3.57 3.94.57-2.85 2.78.67 3.92L8 10.14l-3.52 1.85.67-3.92-2.85-2.78 3.94-.57z"/></svg>
+                          </div>
+                          <span class="process-step_tag">Operação Diária</span>
+                        </div>
+                        <blockquote class="reviews-card_quote">O sistema é direto. Não tem frescura, você entra e já vê o que precisa. Pra mim, que vivo na correria, isso faz toda a diferença no dia a dia.</blockquote>
+                        <figcaption class="reviews-card_author">
+                          <div class="reviews-card_person">
+                            <span class="reviews-card_avatar" aria-hidden="true">MS</span>
+                            <div class="reviews-card_identity">
+                              <p class="reviews-card_name">Marcos Silva</p>
+                              <p class="reviews-card_role">Gestor de Frota</p>
+                            </div>
+                          </div>
+                          <p class="skylo-label reviews-card_rating">5.0</p>
+                        </figcaption>
+                      </figure>
+                    </li>
+                    <li data-aos="fade-up" data-aos-delay="300">
+                      <figure class="reviews-card surface-frosty">
+                        <div class="reviews-card_top">
+                          <div class="reviews-stars" aria-label="Nota 5.0">
+                            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.15l1.76 3.57 3.94.57-2.85 2.78.67 3.92L8 10.14l-3.52 1.85.67-3.92-2.85-2.78 3.94-.57z"/></svg>
+                            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.15l1.76 3.57 3.94.57-2.85 2.78.67 3.92L8 10.14l-3.52 1.85.67-3.92-2.85-2.78 3.94-.57z"/></svg>
+                            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.15l1.76 3.57 3.94.57-2.85 2.78.67 3.92L8 10.14l-3.52 1.85.67-3.92-2.85-2.78 3.94-.57z"/></svg>
+                            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.15l1.76 3.57 3.94.57-2.85 2.78.67 3.92L8 10.14l-3.52 1.85.67-3.92-2.85-2.78 3.94-.57z"/></svg>
+                            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.15l1.76 3.57 3.94.57-2.85 2.78.67 3.92L8 10.14l-3.52 1.85.67-3.92-2.85-2.78 3.94-.57z"/></svg>
+                          </div>
+                          <span class="process-step_tag">Cobertura Satelital</span>
+                        </div>
+                        <blockquote class="reviews-card_quote">Antes eu usava um sistema que só funcionava com 4G. Quando a máquina sumia no mato, eu ficava no escuro. Com esse novo, mesmo fora da rede, continua mandando sinal.</blockquote>
+                        <figcaption class="reviews-card_author">
+                          <div class="reviews-card_person">
+                            <span class="reviews-card_avatar" aria-hidden="true">AC</span>
+                            <div class="reviews-card_identity">
+                              <p class="reviews-card_name">Ana Costa</p>
+                              <p class="reviews-card_role">Diretora de Operações</p>
+                            </div>
+                          </div>
+                          <p class="skylo-label reviews-card_rating">5.0</p>
+                        </figcaption>
+                      </figure>
+                    </li>
+                    <li data-aos="fade-up" data-aos-delay="400">
+                      <figure class="reviews-card surface-frosty">
+                        <div class="reviews-card_top">
+                          <div class="reviews-stars" aria-label="Nota 4.0">
+                            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.15l1.76 3.57 3.94.57-2.85 2.78.67 3.92L8 10.14l-3.52 1.85.67-3.92-2.85-2.78 3.94-.57z"/></svg>
+                            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.15l1.76 3.57 3.94.57-2.85 2.78.67 3.92L8 10.14l-3.52 1.85.67-3.92-2.85-2.78 3.94-.57z"/></svg>
+                            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.15l1.76 3.57 3.94.57-2.85 2.78.67 3.92L8 10.14l-3.52 1.85.67-3.92-2.85-2.78 3.94-.57z"/></svg>
+                            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.15l1.76 3.57 3.94.57-2.85 2.78.67 3.92L8 10.14l-3.52 1.85.67-3.92-2.85-2.78 3.94-.57z"/></svg>
+                            <svg class="is-empty" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.15l1.76 3.57 3.94.57-2.85 2.78.67 3.92L8 10.14l-3.52 1.85.67-3.92-2.85-2.78 3.94-.57z"/></svg>
+                          </div>
+                          <span class="process-step_tag">Telemetria Multimarcas</span>
+                        </div>
+                        <blockquote class="reviews-card_quote">Pra ser sincero, nem imaginava que as máquinas antigas passavam tanta coisa. Agora sei até quando estão forçando demais.</blockquote>
+                        <figcaption class="reviews-card_author">
+                          <div class="reviews-card_person">
+                            <span class="reviews-card_avatar" aria-hidden="true">RM</span>
+                            <div class="reviews-card_identity">
+                              <p class="reviews-card_name">Roberto Mendes</p>
+                              <p class="reviews-card_role">Supervisor de Manutenção</p>
+                            </div>
+                          </div>
+                          <p class="skylo-label reviews-card_rating">4.0</p>
+                        </figcaption>
+                      </figure>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="faq" aria-labelledby="faq-title">
+          <div class="scroll-panel is-faq" data-scroll-item="FAQ-STEP">
+            <div class="section-inner">
+              <div class="container-large">
+                <div class="page-padding">
+                  <div class="faq_header">
+                    <div class="skylo-label_wrapper" data-aos="fade-up"><p class="skylo-label">Perguntas frequentes</p></div>
+                    <h2 id="faq-title" class="heading-large white" data-aos="fade-up" data-aos-delay="100">Dúvidas que chegam do <span class="text-color-green">chão da obra.</span></h2>
+                  </div>
+
+                  <div class="faq-list" data-aos="fade-up" data-aos-delay="200">
+                    <details class="faq-item surface-frosty" name="onlink-faq" open>
+                      <summary>
+                        <span class="faq-item_index heading-kpi-small outline" aria-hidden="true">01</span>
+                        <h3 class="faq-item_question">Quanto tempo leva para instalar e começar a usar?</h3>
+                        <svg class="faq-item_icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                      </summary>
+                      <div class="faq-item_answer">
+                        <p class="skylo-is_paragraph">A instalação é rápida e não interfere na operação. Em média, cada máquina leva de 30 minutos a 1 hora para ser equipada. Após a instalação, os dados começam a aparecer imediatamente no app.</p>
+                      </div>
+                    </details>
+                    <details class="faq-item surface-frosty" name="onlink-faq">
+                      <summary>
+                        <span class="faq-item_index heading-kpi-small outline" aria-hidden="true">02</span>
+                        <h3 class="faq-item_question">Funciona em locais sem sinal de celular?</h3>
+                        <svg class="faq-item_icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                      </summary>
+                      <div class="faq-item_answer">
+                        <p class="skylo-is_paragraph">Sim! Nosso sistema funciona via satélite, ideal para locais remotos como obras, mineração e agronegócio. Você continua no controle mesmo longe da cidade.</p>
+                      </div>
+                    </details>
+                    <details class="faq-item surface-frosty" name="onlink-faq">
+                      <summary>
+                        <span class="faq-item_index heading-kpi-small outline" aria-hidden="true">03</span>
+                        <h3 class="faq-item_question">Qual o retorno sobre investimento (ROI)?</h3>
+                        <svg class="faq-item_icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                      </summary>
+                      <div class="faq-item_answer">
+                        <p class="skylo-is_paragraph">Nossos clientes relatam economia média de 20% em combustível, manutenção e seguros. O investimento se paga em poucos meses através da otimização da operação.</p>
+                      </div>
+                    </details>
+                    <details class="faq-item surface-frosty" name="onlink-faq">
+                      <summary>
+                        <span class="faq-item_index heading-kpi-small outline" aria-hidden="true">04</span>
+                        <h3 class="faq-item_question">É compatível com qualquer tipo de máquina?</h3>
+                        <svg class="faq-item_icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                      </summary>
+                      <div class="faq-item_answer">
+                        <p class="skylo-is_paragraph">Sim, trabalhamos com escavadeiras, tratores, caminhões, empilhadeiras e diversos outros equipamentos. Nossa equipe técnica adapta a solução para cada tipo de máquina.</p>
+                      </div>
+                    </details>
+                    <details class="faq-item surface-frosty" name="onlink-faq">
+                      <summary>
+                        <span class="faq-item_index heading-kpi-small outline" aria-hidden="true">05</span>
+                        <h3 class="faq-item_question">Preciso de treinamento para usar?</h3>
+                        <svg class="faq-item_icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                      </summary>
+                      <div class="faq-item_answer">
+                        <p class="skylo-is_paragraph">Não! A interface foi desenvolvida para ser intuitiva. Além disso, oferecemos treinamento completo para sua equipe e suporte técnico contínuo.</p>
+                      </div>
+                    </details>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="contato" aria-labelledby="cta-title">
+          <div class="scroll-panel is-cta" data-scroll-item="CTA-STEP">
+            <div class="section-inner">
+              <section class="section-cta">
+                <div class="page-padding">
+                  <div class="container-large">
+                    <div class="cta_padding-vertical">
+                      <div class="cta_component">
+                        <div class="text-align-center">
+                          <div class="max-width-large-2 align-center">
+                            <div class="cta_heading-wrapper">
+                              <div class="cta_logo-wrapper">
+                                <img src="assets/img/brand/logo-gradient-1.svg" loading="lazy" alt="" class="cta_logo-1">
+                                <img src="assets/img/brand/logo-gradient-mid.svg" loading="lazy" alt="" class="cta_logo-2 opacity-0">
+                                <img src="assets/img/brand/logo-gradient-2.svg" loading="lazy" alt="" class="cta_logo-3">
+                              </div>
+                              <div class="cta_logo-wrapper z-minus-1">
+                                <img src="assets/img/brand/logo-gradient-1.svg" loading="lazy" alt="" class="cta_logo-1">
+                                <img src="assets/img/brand/logo-gradient-mid.svg" loading="lazy" alt="" class="cta_logo-2">
+                                <img src="assets/img/brand/logo-gradient-2.svg" loading="lazy" alt="" class="cta_logo-3">
+                              </div>
+                              <h2 id="cta-title" class="heading-xlarge">Pronto para conectar toda a sua frota?</h2>
+                            </div>
+                            <div class="button-row button-row-center">
+                              <div class="button-magnetic-wrapper">
+                                <a href="https://wa.me/?text=Ol%C3%A1!%20Quero%20conhecer%20a%20OnLink%20e%20conectar%20minha%20frota." class="button w-button" target="_blank" rel="noopener noreferrer">Fale conosco no WhatsApp</a>
+                              </div>
+                              <div class="button-magnetic-wrapper">
+                                <a href="#publico" class="text-link w-inline-block">
+                                  <div class="text-link-text">Definir meu perfil (em menos de 2 minutos)</div>
+                                  <div class="text-link-icon w-embed">
+                                    <svg width="100%" height="100%" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.3335 8.00004H12.6668M12.6668 8.00004L8.00016 3.33337M12.6668 8.00004L8.00016 12.6667" stroke="currentColor" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <footer class="footer-skylo">
+                <div class="page-padding">
+                  <div class="container-large">
+                    <div class="footer_component">
+                      <div class="footer_top">
+                        <a href="#inicio" class="footer_brand-link" aria-label="OnLink — página inicial">
+                          <div class="brand-wrapper">
+                            <div class="skylo-symbol w-embed">
+                              <svg width="100%" height="100%" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <circle cx="13" cy="19" r="9.5" stroke="url(#onlink-footer-glow)" stroke-width="5"/>
+                                <path d="M28.5 29V10.5M28.5 18a8 8 0 0 1 16 0v11" stroke="url(#onlink-footer-glow)" stroke-width="5"/>
+                                <path d="M5 37q20 13 40 0" stroke="url(#onlink-footer-glow)" stroke-width="3.5" stroke-linecap="round"/>
+                                <defs>
+                                  <linearGradient id="onlink-footer-glow" x1="0" y1="0" x2="50" y2="0" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0.04" stop-color="#19F3FF"/>
+                                    <stop offset="0.31" stop-color="#12F6BC"/>
+                                    <stop offset="0.61" stop-color="#0BFA6F"/>
+                                    <stop offset="1" stop-color="#00FF00"/>
+                                  </linearGradient>
+                                </defs>
+                              </svg>
+                            </div>
+                            <div class="skylo-wordmark w-embed">
+                              <svg width="100%" height="100%" viewBox="0 0 64 34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <text x="0" y="25" fill="currentColor" font-family="Inter, Arial, sans-serif" font-size="27" font-weight="600" letter-spacing="-0.5">Link</text>
+                              </svg>
+                            </div>
+                          </div>
+                          <span class="footer_brand-note">OnLink (Powered by OnBoard)</span>
+                        </a>
+
+                        <div>
+                          <p class="footer_heading">Navegação</p>
+                          <nav class="footer_nav" aria-label="Rodapé">
+                            <a href="#inicio">Início</a>
+                            <a href="#como-funciona">Como Funciona</a>
+                            <a href="#beneficios">Benefícios</a>
+                            <a href="#frota">Frota</a>
+                            <a href="#setores">Setores</a>
+                            <a href="#app">App</a>
+                            <a href="#depoimentos">Depoimentos</a>
+                            <a href="#faq">FAQ</a>
+                          </nav>
+                        </div>
+
+                        <div>
+                          <p class="footer_heading">Contato</p>
+                          <ul class="footer_contact">
+                            <li><a href="mailto:contato@onlink.com.br">contato@onlink.com.br</a></li>
+                            <li class="footer_contact-note">Atendimento das 8h às 18h</li>
+                            <li><a href="https://wa.me/?text=Ol%C3%A1!%20Quero%20falar%20com%20o%20comercial%20da%20OnLink." target="_blank" rel="noopener noreferrer">WhatsApp Comercial</a></li>
+                          </ul>
+                        </div>
+
+                        <div>
+                          <p class="footer_heading">Baixe o app</p>
+                          <div class="footer_stores">
+                            <a href="#app" class="button w-button">Download na App Store</a>
+                            <a href="#app" class="button-outline-green w-button">Disponível no Google Play</a>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="footer_bottom-wrapper">
+                        <p class="footer_credit-text">© OnLink — Powered by OnBoard. Todos os direitos reservados.</p>
+                        <p class="footer_credit-text"><span class="text-span-8">CNPJ 46.885.382/0001-89 · contato@onlink.com.br · Atendimento das 8h às 18h</span></p>
+                        <p class="footer_credit-text"><span class="text-span-8s">A OnLink reserva-se o direito de atualizar este site, seus serviços e condições a qualquer momento. Cobertura satelital, disponibilidade e desempenho dependem do ambiente de uso, do equipamento e das condições de operação. Marcas de terceiros pertencem aos respectivos titulares.</span></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </footer>
+            </div>
+          </div>
+        </section>
+      </div>
+
+    </main>
+  </div>
+</body>
+</html>

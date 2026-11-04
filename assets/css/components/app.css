@@ -1,0 +1,529 @@
+/* Aplicativo Mobile OnLink — três pilares interativos + HUD satelital + CTAs de loja. */
+
+.scroll-panel.is-app {
+  --glow-x: 82%;
+  --glow-y: 52%;
+}
+
+.app_component {
+  display: grid;
+  grid-template-columns: minmax(18.5rem, 1.15fr) minmax(17.5rem, 1.05fr) auto;
+  align-items: center;
+  gap: 2.25rem;
+  width: 100%;
+}
+
+.app_component .skylo-is_text {
+  max-width: 28rem;
+  margin-right: 0;
+}
+
+.app_component .skylo-is_paragraph-wrapper {
+  max-width: 26rem;
+  margin-top: 1rem;
+  margin-bottom: 1.15rem;
+}
+
+/* Lista de destaques rápidos na coluna de texto (mesma linguagem de .fleet-showcase_highlight). */
+.app-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+  width: 100%;
+  margin: 0 0 1.5rem;
+  padding: .9rem 0 0;
+  list-style: none;
+  border-top: 1px solid rgba(255, 255, 255, .1);
+}
+
+.app-highlight {
+  display: flex;
+  align-items: flex-start;
+  gap: .65rem;
+  padding-left: .75rem;
+  border-left: 2px solid color-mix(in srgb, var(--skylo-green) 55%, transparent);
+}
+
+.app-highlight_dot {
+  flex: 0 0 .42rem;
+  width: .42rem;
+  height: .42rem;
+  margin-top: .42rem;
+  border-radius: 50%;
+  background-color: var(--skylo-green);
+  box-shadow: 0 0 10px var(--skylo-green);
+}
+
+.app-highlight .surface-card_text {
+  color: #d5dbe6;
+  font-size: .925rem;
+  line-height: 1.4;
+}
+
+/* Botões das lojas (App Store / Google Play). */
+.app-store-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .75rem;
+  width: 100%;
+}
+
+.app-store-row .app-store-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  width: auto;
+  min-width: 12.25rem;
+  padding: .7rem 1.15rem;
+  font-size: .925rem;
+  text-decoration: none;
+}
+
+.app-store-btn_icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+/* Pilares interativos (.surface-frosty). */
+.app-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: .85rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.app-pillar {
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+  padding: 1.2rem 1.35rem;
+  cursor: pointer;
+  outline: none;
+  transition: border-color .35s, box-shadow .35s, transform .25s, background-color .35s;
+}
+
+.app-pillar:hover,
+.app-pillar:focus-visible {
+  transform: translateX(.2rem);
+  border-color: color-mix(in srgb, var(--skylo-green) 42%, transparent);
+}
+
+.app-pillar.is-active {
+  border-color: color-mix(in srgb, var(--skylo-green) 55%, transparent);
+  background-color: rgba(115, 245, 116, .04);
+  box-shadow: 0 0 36px color-mix(in srgb, var(--skylo-green) 14%, transparent);
+}
+
+.app-pillar.is-active:after {
+  opacity: 1;
+}
+
+.app-pillar_top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .75rem;
+  margin-bottom: .15rem;
+}
+
+.app-pillar_index {
+  font-family: Inter, Arial, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1;
+  transition: -webkit-text-stroke-color .35s;
+}
+
+.app-pillar:hover .app-pillar_index,
+.app-pillar:focus-visible .app-pillar_index,
+.app-pillar.is-active .app-pillar_index {
+  -webkit-text-stroke-color: var(--skylo-green);
+}
+
+.app-pillar .surface-card_title {
+  font-size: 1.125rem;
+}
+
+.app-pillar .surface-card_text {
+  font-size: .925rem;
+  line-height: 1.45;
+}
+
+/* Mockup do smartphone + HUD de telemetria satelital. */
+.app-phone {
+  position: relative;
+  flex: 0 0 auto;
+  width: min(16.25rem, 21vw);
+  filter: drop-shadow(0 0 3rem color-mix(in srgb, var(--skylo-green) 22%, transparent));
+}
+
+.app-phone > img {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+.app-phone_screen {
+  position: absolute;
+  inset: 2.1% 4.9% 2.2% 4.9%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: .5rem;
+  padding: .65rem .85rem .7rem;
+  overflow: hidden;
+  border-radius: 17% / 7.8%;
+  background:
+    radial-gradient(12rem 9rem at 85% 12%, color-mix(in srgb, var(--skylo-green) 18%, transparent), transparent 70%),
+    linear-gradient(180deg, #191c20 0%, #111316 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .07);
+}
+
+/* Barra de status superior + recorte de câmera. */
+.app-phone_statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 .2rem;
+  color: #9ba4b6;
+  font-family: Inter, Arial, sans-serif;
+  font-size: .62rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+}
+
+.app-phone_camera {
+  width: .55rem;
+  height: .55rem;
+  border-radius: 50%;
+  background-color: #08090b;
+  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .14);
+}
+
+.app-phone_signal {
+  color: var(--skylo-green);
+}
+
+/* Cabeçalho interno do app. */
+.app-phone_header {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+
+.app-phone_header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .4rem;
+}
+
+.app-phone_brand {
+  margin: 0;
+  color: var(--skylo-green);
+  font-family: Inter, Arial, sans-serif;
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.app-phone_badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .28rem;
+  padding: .15rem .42rem;
+  border-radius: 999px;
+  background-color: #73f5741f;
+  color: var(--skylo-green);
+  font-family: Inter, Arial, sans-serif;
+  font-size: .58rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.app-phone_badge-dot {
+  width: .32rem;
+  height: .32rem;
+  border-radius: 50%;
+  background-color: var(--skylo-green);
+  box-shadow: 0 0 6px var(--skylo-green);
+}
+
+.app-phone_heading {
+  margin: 0;
+  color: var(--white);
+  font-family: Inter, Arial, sans-serif;
+  font-size: .98rem;
+  font-weight: 500;
+  letter-spacing: -.03em;
+  line-height: 1.18;
+}
+
+/* Mini KPIs da frota na tela. */
+.app-phone_kpis {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .35rem;
+}
+
+.app-phone_kpi {
+  display: flex;
+  flex-direction: column;
+  padding: .4rem .45rem;
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: .35rem;
+  background-color: rgba(255, 255, 255, .03);
+}
+
+.app-phone_kpi-value {
+  color: var(--white);
+  font-family: Inter, Arial, sans-serif;
+  font-size: .78rem;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.app-phone_kpi-label {
+  margin-top: .12rem;
+  color: #9ba4b6;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: .58rem;
+  line-height: 1.1;
+}
+
+/* Card de telemetria de máquina ativa. */
+.app-phone_unit {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  padding: .5rem .6rem;
+  border: 1px solid color-mix(in srgb, var(--skylo-green) 32%, transparent);
+  border-radius: .4rem;
+  background-color: rgba(115, 245, 116, .05);
+}
+
+.app-phone_unit-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .35rem;
+}
+
+.app-phone_unit-name {
+  color: var(--white);
+  font-family: Inter, Arial, sans-serif;
+  font-size: .68rem;
+  font-weight: 600;
+}
+
+.app-phone_unit-tag {
+  color: var(--skylo-green);
+  font-family: Inter, Arial, sans-serif;
+  font-size: .56rem;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.app-phone_unit-bar {
+  width: 100%;
+  height: 3px;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, .12);
+  overflow: hidden;
+}
+
+.app-phone_unit-fill {
+  display: block;
+  width: 82%;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #12f6bc 0%, var(--skylo-green) 100%);
+}
+
+.app-phone_unit-meta {
+  display: flex;
+  justify-content: space-between;
+  color: #9ba4b6;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: .6rem;
+}
+
+/* Lista sincronizada com os 3 pilares. */
+.app-phone_list {
+  display: flex;
+  flex-direction: column;
+  gap: .38rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.app-phone_list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .4rem;
+  padding: .48rem .6rem;
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: .375rem;
+  color: #9ba4b6;
+  background: rgba(255, 255, 255, .03);
+  font-family: Roboto, Arial, sans-serif;
+  font-size: .68rem;
+  line-height: 1.25;
+  transition: border-color .3s, background-color .3s;
+}
+
+.app-phone_list li.is-active {
+  border-color: color-mix(in srgb, var(--skylo-green) 55%, transparent);
+  background: rgba(115, 245, 116, .08);
+}
+
+.app-phone_item-main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.app-phone_list strong {
+  display: block;
+  color: var(--white);
+  font-family: Inter, Arial, sans-serif;
+  font-size: .74rem;
+  font-weight: 500;
+}
+
+.app-phone_item-pill {
+  flex-shrink: 0;
+  padding: .15rem .38rem;
+  border-radius: .2rem;
+  background-color: rgba(255, 255, 255, .06);
+  color: #d5dbe6;
+  font-family: Inter, Arial, sans-serif;
+  font-size: .56rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+}
+
+.app-phone_list li.is-active .app-phone_item-pill {
+  background-color: #73f57429;
+  color: var(--skylo-green);
+}
+
+/* Barra inferior de navegação do app. */
+.app-phone_nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding-top: .4rem;
+  border-top: 1px solid rgba(255, 255, 255, .08);
+  text-align: center;
+  color: #667085;
+  font-family: Inter, Arial, sans-serif;
+  font-size: .56rem;
+  font-weight: 500;
+}
+
+.app-phone_nav .is-active {
+  color: var(--skylo-green);
+  font-weight: 600;
+}
+
+@media (min-width: 1050px) and (max-height: 760px) {
+  .app_component {
+    gap: 1.75rem;
+  }
+
+  .app-highlights {
+    margin-bottom: 1rem;
+    padding-top: .65rem;
+  }
+
+  .app-pillar {
+    padding: .9rem 1.15rem;
+    gap: .3rem;
+  }
+
+  .app-pillar_index {
+    font-size: 1.25rem;
+  }
+
+  .app-phone {
+    width: min(14.75rem, 19.5vw);
+  }
+}
+
+@media (max-width: 1049px) {
+  .app_component {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+  }
+
+  .app_component .skylo-is_text,
+  .app_component .skylo-is_paragraph-wrapper {
+    max-width: none;
+  }
+
+  .app-highlights {
+    margin-bottom: 1.15rem;
+  }
+
+  .app-pillars.surface-rail {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .app-pillars.surface-rail > li {
+    display: flex;
+    flex: 0 0 min(19rem, 80%);
+  }
+
+  .app-pillar {
+    width: 100%;
+    height: 100%;
+  }
+
+  .app-pillar:hover,
+  .app-pillar:focus-visible {
+    transform: none;
+  }
+
+  .app-phone {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .app-highlights {
+    display: none;
+  }
+
+  .app-store-row {
+    gap: .6rem;
+  }
+
+  .app-store-row .app-store-btn {
+    flex: 1 1 10.5rem;
+    min-width: 0;
+    padding: .65rem .9rem;
+    font-size: .85rem;
+  }
+
+  .app-pillar {
+    padding: 1.15rem;
+  }
+}

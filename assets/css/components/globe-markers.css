@@ -1,0 +1,197 @@
+/* Globo 3D — marcadores e infobox (bolk-skylo main.css) com detalhes em --skylo-green. */
+
+.globe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.globe-markers {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.globe-marker {
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.globe-marker-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%) translateY(-50%);
+}
+
+.globe-marker-icon {
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  color: var(--skylo-green);
+  background: rgba(8, 13, 10, 0.85);
+  border: 1px solid color-mix(in srgb, var(--skylo-green) 70%, transparent);
+  border-radius: 100%;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--skylo-green) 32%, transparent);
+  transform: scale(.5);
+  transition: .7s cubic-bezier(.19, 1, .22, 1) transform, box-shadow .35s, background-color .35s;
+}
+
+.globe-marker-icon:before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border: 1px solid color-mix(in srgb, var(--skylo-green) 38%, transparent);
+  border-radius: 100%;
+  animation: globe-marker-pulse 3s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes globe-marker-pulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.65;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+.globe-marker-icon i {
+  font-family: Roboto, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  color: var(--skylo-green);
+  transform: scale(1.5);
+  transition: .7s cubic-bezier(.19, 1, .22, 1) transform;
+}
+
+.globe-marker-infobox {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  background: rgba(14, 20, 16, 0.9);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid color-mix(in srgb, var(--skylo-green) 40%, transparent);
+  border-radius: .5rem;
+  box-shadow: 0 0 36px color-mix(in srgb, var(--skylo-green) 18%, transparent);
+  height: 7.25rem;
+  width: 20.5rem;
+  padding: 0 3.75rem 0 1.35rem;
+  left: 50%;
+  top: -1.25rem;
+  transform: translateY(-100%) translate(-50%);
+  overflow: hidden;
+}
+
+.globe-marker-infobox:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 1.25rem;
+  right: 1.25rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--skylo-green), transparent);
+  pointer-events: none;
+}
+
+.globe-marker-infobox h3 {
+  font-family: Inter, Arial, sans-serif;
+  color: var(--skylo-green);
+  margin-bottom: .4rem;
+  font-size: 1.1rem;
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -.02em;
+}
+
+.globe-marker-infobox p {
+  font-family: Roboto, Arial, sans-serif;
+  color: #d5dbe6;
+  font-size: .85rem;
+  line-height: 1.3;
+}
+
+.globe-marker-infobox-inner {
+  margin-top: -.1rem;
+}
+
+.globe-marker-infobox-img {
+  position: absolute;
+  top: 0;
+  right: .25rem;
+  width: 3.75rem;
+  height: 6.25rem;
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--skylo-green) 35%, transparent));
+}
+
+.globe-marker-infobox-img img {
+  width: 3.75rem;
+  height: 6.25rem;
+}
+
+.globe-marker .globe-marker-icon {
+  transform: scale(0);
+  transition: transform .3s;
+}
+
+.globe-marker .globe-marker-infobox {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+}
+
+.globe-marker:hover .globe-marker-infobox {
+  opacity: 1;
+}
+
+.globe-marker.visible {
+  pointer-events: auto;
+}
+
+.globe-marker.visible .globe-marker-icon {
+  transform: scale(.55);
+}
+
+.globe-marker.visible:hover {
+  z-index: 30;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .globe-marker.visible:hover .globe-marker-icon,
+  .globe-marker.visible:hover .globe-marker-icon svg,
+  .globe-marker.visible:hover .globe-marker-icon i {
+    transform: scale(1);
+    transition: 1.2s cubic-bezier(.19, 1, .22, 1) transform;
+  }
+}
+
+@media (max-width: 1049px) {
+  .globe-markers {
+    display: none;
+  }
+
+  .globe-marker-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .globe-marker-icon svg,
+  .globe-marker-icon i {
+    width: .75rem;
+  }
+}

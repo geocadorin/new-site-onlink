@@ -1,0 +1,95 @@
+/* Palco do globo 3D — bolk-skylo main.css (body travado + scroll virtual do bundle skylo-globe). */
+
+body.globe-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 100vw;
+  min-height: calc(var(--vh, 1vh) * 100);
+  overflow: hidden;
+  overscroll-behavior-x: none;
+  color: var(--main-text-color);
+  background-color: var(--main-background-color);
+}
+
+body.globe-page.is-scroll-native {
+  position: relative;
+  overflow: auto;
+}
+
+.globe-page .page-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--main-background-color);
+}
+
+.globe-page.is-scroll-native .page-wrapper {
+  position: relative;
+  height: auto;
+  overflow: visible;
+}
+
+.page-mask {
+  pointer-events: none;
+  z-index: 30;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--black);
+}
+
+.section-step {
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+[data-scroll-item] > * {
+  will-change: transform;
+}
+
+body.is-scroll-native [data-scroll-item] {
+  visibility: visible !important;
+  transform: none !important;
+}
+
+.section-globe {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  color: var(--white);
+}
+
+.home-interactive-globes_inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.home-interactive-globes_inner .page-padding {
+  padding: 0 2.5rem;
+}
+
+@media (min-width: 1280px) {
+  .home-interactive-globes_inner .page-padding {
+    padding: 0 8%;
+  }
+}
+
+@media (max-width: 1049px) {
+  .home-interactive-globes_inner .page-padding {
+    padding: 0 1.25rem;
+  }
+}

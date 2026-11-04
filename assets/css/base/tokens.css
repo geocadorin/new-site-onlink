@@ -1,0 +1,32 @@
+/* Design tokens — skylo-tech-stage.shared.css (:root) + bolk-skylo main.css (:root). */
+
+:root {
+  --black: black;
+  --white: white;
+  --skylo-slate-grey: #667085;
+  --skylo-green: #73f574;
+  --skylo-dark-green: #00c11e;
+  --skylo-dark-background: #212121;
+  --black-3: #302f34;
+  --black-2: #242323;
+  --green--400: #57bc3f;
+  --silver: #bdc0c6;
+  --dark-grey: #ababab;
+  --light-green: #e9fee4;
+  --black-50: #080e1c80;
+  --black-new: #080e1c;
+  --grey-bg: #e5e9ed;
+  --neon-green: #00ff29;
+  --grey-2: #e5e9ed;
+  --error-red: #fa5a5a;
+
+  --main-text-color: #b3b3b3;
+  --main-background-color: #212021;
+  --main-padding: 2rem;
+}
+
+@media (min-width: 1048px) {
+  :root {
+    --main-padding: 4.4vw;
+  }
+}

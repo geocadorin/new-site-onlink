@@ -1,0 +1,158 @@
+/* Tipografia — elementos globais e classes catalogadas (design-system.html #typography). */
+
+body {
+  color: var(--black);
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+h1 {
+  letter-spacing: -2px;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 3.75rem;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+h4,
+h5,
+h6 {
+  color: var(--white);
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+h4 { font-size: 1rem; }
+h5 { font-size: .875rem; }
+h6 { font-size: .75rem; }
+
+p {
+  color: var(--skylo-slate-grey);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  transition: all .5s;
+}
+
+.heading-xlarge {
+  letter-spacing: -2px;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 3.75rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.heading-large {
+  letter-spacing: -1.5px;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.heading-large.white {
+  color: var(--white);
+}
+
+.heading-medium {
+  color: #fff;
+  text-align: left;
+  font-size: 2.25rem;
+  font-weight: 500;
+  line-height: 1.22;
+}
+
+.heading-small {
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.skylo-is_paragraph {
+  font-family: Inter, Arial, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.skylo-label {
+  color: #ababab;
+  font-weight: 500;
+}
+
+.skylo-is_text {
+  z-index: 30;
+  flex-direction: column;
+  flex: 0 auto;
+  align-items: flex-start;
+  max-width: 26rem;
+  margin-left: 0;
+  margin-right: auto;
+  display: flex;
+  position: relative;
+}
+
+.heading-kpi {
+  font-family: Inter, Arial, sans-serif;
+  font-size: 6.25rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.heading-kpi-small { font-size: 3.75rem; }
+.heading-kpi-xsmall { font-size: 1.25rem; }
+
+.text-color-white { color: #fff; }
+.text-color-green { color: var(--skylo-green); }
+.text-weight-light { font-weight: 300; }
+.text-weight-normal { font-weight: 400; }
+.text-weight-bold { font-weight: 700; }
+.text-size-tiny { font-size: .75rem; }
+.text-size-small { font-size: .875rem; }
+.text-size-medium { font-size: 1.25rem; }
+.text-size-large { font-size: 1.5rem; }
+.text-align-left { text-align: left; }
+.text-align-center { text-align: center; }
+.text-align-right { text-align: right; }
+
+@media screen and (max-width: 767px) {
+  .heading-xlarge { font-size: 2.5rem; }
+  .heading-large { font-size: 2rem; }
+  .heading-medium { font-size: 1.5rem; }
+  .heading-kpi { font-size: 2.5rem; }
+  .heading-kpi-small { font-size: 1.5rem; }
+  .text-size-medium,
+  .text-size-large { font-size: 1rem; }
+}
+
+@media screen and (max-width: 479px) {
+  .skylo-is_text {
+    z-index: 20;
+    justify-content: center;
+    margin-top: 0;
+  }
+}

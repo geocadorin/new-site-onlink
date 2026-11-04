@@ -1,0 +1,199 @@
+/* "Impacto & Como Funciona" — inspirada em .globe-text-2 ("The layer that enhances every network"). */
+
+.scroll-panel.is-impact {
+  --glow-x: 10%;
+  --glow-y: 30%;
+}
+
+.scroll-panel.is-process {
+  --glow-x: 50%;
+  --glow-y: 100%;
+}
+
+.impact_component {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.impact_heading {
+  max-width: 54rem;
+}
+
+.impact_component .skylo-is_paragraph-wrapper {
+  max-width: 36rem;
+}
+
+/* Barra de métricas — tipografia display .heading-kpi / .heading-kpi-small (.section-stats). */
+.impact-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(255, 255, 255, .12);
+}
+
+.impact-stats_item {
+  padding: 1.75rem 0 0 1.5rem;
+  border-left: 1px solid rgba(255, 255, 255, .12);
+}
+
+.impact-stats_item:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.impact-stats_value {
+  color: var(--white);
+  font-size: clamp(3rem, min(6.5vw, 11vh), 6.25rem);
+  line-height: 1;
+  letter-spacing: -.04em;
+  text-shadow: 0 0 2.5rem color-mix(in srgb, var(--skylo-green) 35%, transparent);
+}
+
+.impact-stats_value .heading-kpi-small {
+  color: var(--skylo-green);
+  font-size: .6em;
+  letter-spacing: -.02em;
+}
+
+.impact-stats_item .skylo-label {
+  margin-top: .75rem;
+}
+
+/* "Instala. Conecta. Gerencia." — três blocos em .surface-frosty. */
+.process_header {
+  max-width: 60rem;
+  margin-bottom: 2.5rem;
+}
+
+.process-step {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%;
+  padding: 2rem 1.75rem;
+}
+
+.process-step_top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+}
+
+.process-step_index {
+  font-family: Inter, Arial, sans-serif;
+  font-weight: 600;
+  line-height: 1;
+  transition: -webkit-text-stroke-color .5s;
+}
+
+.process-step:hover .process-step_index {
+  -webkit-text-stroke-color: var(--skylo-green);
+}
+
+.process-step_tag {
+  padding: .375rem .625rem;
+  border-radius: .1875rem;
+  color: var(--skylo-green);
+  background-color: #73f5741f;
+  font-family: Inter, Arial, sans-serif;
+  font-size: .75rem;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@media (min-width: 1050px) {
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .process-step {
+    min-height: 19rem;
+  }
+}
+
+@media (min-width: 1050px) and (max-height: 760px) {
+  .process-step {
+    min-height: 16rem;
+  }
+
+  .impact-stats_item {
+    padding-top: 1.25rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .impact-stats {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 1.5rem;
+  }
+
+  .impact-stats_item:nth-child(odd) {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .impact-stats {
+    margin-top: 1rem;
+  }
+
+  .impact-stats_item {
+    padding-top: 1.25rem;
+  }
+
+  .impact-stats_value {
+    font-size: 2.5rem;
+  }
+
+  .process_header {
+    margin-bottom: 1.75rem;
+  }
+
+  .process-step {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .process-step_index.heading-kpi-small {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 767px) and (max-height: 720px) {
+  .impact_heading.heading-large {
+    font-size: 1.75rem;
+  }
+
+  .impact_component .skylo-is_paragraph-wrapper {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+  }
+
+  .impact-stats {
+    margin-top: .75rem;
+    row-gap: .75rem;
+  }
+
+  .impact-stats_item {
+    padding-top: .75rem;
+  }
+
+  .impact-stats_value {
+    font-size: 2rem;
+  }
+
+  .impact-stats_item .skylo-label {
+    margin-top: .4rem;
+  }
+}

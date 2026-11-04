@@ -1,0 +1,70 @@
+/* Content — wrappers do .skylo-is_text (skylo-tech-stage.shared.css) e .text-link sobre fundo escuro. */
+
+.skylo-label_wrapper {
+  margin-bottom: .75rem;
+}
+
+.skylo-is_paragraph-wrapper {
+  max-width: 25rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.skylo-is_paragraph.is-satellite {
+  width: 85%;
+}
+
+.skylo-is_button-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.button-terciary-magnetic-wrapper {
+  display: inline-block;
+  margin: -1.25rem;
+  padding: 1.25rem;
+}
+
+.scroll-panel .skylo-is_paragraph {
+  color: #9ba4b6;
+  line-height: 1.5;
+}
+
+.scroll-panel .text-link {
+  color: var(--white);
+  font-family: Inter, Arial, sans-serif;
+  font-weight: 500;
+}
+
+.scroll-panel .text-link-icon {
+  color: var(--skylo-green);
+  transition: transform .25s;
+}
+
+.scroll-panel .text-link:hover .text-link-icon {
+  transform: translate(.25rem);
+}
+
+@media (max-width: 1049px) {
+  .scroll-panel .skylo-is_text,
+  .scroll-panel .skylo-is_paragraph-wrapper {
+    max-width: none;
+  }
+
+  .skylo-is_paragraph.is-satellite {
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .scroll-panel .skylo-is_paragraph {
+    font-size: 1rem;
+  }
+
+  .skylo-is_paragraph-wrapper {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}

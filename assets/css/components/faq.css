@@ -1,0 +1,132 @@
+/* FAQ numerado 01–05 — accordion em Surfaces, tipografia de Content. */
+
+.scroll-panel.is-faq {
+  --glow-x: 50%;
+  --glow-y: 0%;
+}
+
+.faq_header {
+  max-width: 46rem;
+  margin-bottom: 1.5rem;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.faq-item {
+  margin: 0;
+  border-radius: .5rem;
+}
+
+.faq-item[open] {
+  border-color: color-mix(in srgb, var(--skylo-green) 35%, transparent);
+  box-shadow: 0 0 40px color-mix(in srgb, var(--skylo-green) 12%, transparent);
+}
+
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.15rem 1.5rem;
+  list-style: none;
+  cursor: pointer;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item_index {
+  flex: none;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1;
+  transition: -webkit-text-stroke-color .4s;
+}
+
+.faq-item[open] .faq-item_index,
+.faq-item:hover .faq-item_index {
+  -webkit-text-stroke-color: var(--skylo-green);
+}
+
+.faq-item_question {
+  flex: 1;
+  color: var(--white);
+  font-family: Inter, Arial, sans-serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: -.3px;
+  line-height: 1.3;
+}
+
+.faq-item_icon {
+  flex: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--skylo-green);
+  transition: transform .35s cubic-bezier(.19, 1, .22, 1);
+}
+
+.faq-item[open] .faq-item_icon {
+  transform: rotate(45deg);
+}
+
+.faq-item_answer {
+  padding: 0 1.5rem 1.35rem 5rem;
+}
+
+.faq-item_answer .skylo-is_paragraph {
+  max-width: 42rem;
+  font-size: 1.05rem;
+}
+
+@media (min-width: 1050px) and (max-height: 760px) {
+  .faq_header {
+    margin-bottom: 1rem;
+  }
+
+  .faq-item summary {
+    padding: .85rem 1.25rem;
+  }
+
+  .faq-item_answer {
+    padding: 0 1.25rem 1rem 4.5rem;
+  }
+
+  .faq-item_question {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .faq-item summary {
+    gap: .85rem;
+    padding: 1rem 1.15rem;
+  }
+
+  .faq-item_index {
+    font-size: 1.35rem;
+  }
+
+  .faq-item_question {
+    font-size: 1rem;
+  }
+
+  .faq-item_answer {
+    padding: 0 1.15rem 1.15rem 1.15rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-item_icon,
+  .faq-item_index {
+    transition: none;
+  }
+}

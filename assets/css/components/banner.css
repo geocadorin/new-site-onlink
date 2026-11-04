@@ -1,0 +1,62 @@
+/* Backgrounds — design-system.html #backgrounds (.banner-page, .paralax-img-banner) + hero .h1. */
+
+.banner-page {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--main-background-color);
+}
+
+.banner-page .background {
+  overflow: hidden;
+}
+
+.banner-page .background .paralax-img-banner {
+  position: absolute;
+  top: -10%;
+  left: -3%;
+  z-index: 1;
+  width: 103%;
+  height: 107%;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.banner-page .flex-wrapper .left-content .h1 {
+  max-width: 358px;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  color: #b3b3b3;
+  letter-spacing: -2px;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 3.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.banner-page .flex-wrapper .left-content .h1 span {
+  color: var(--skylo-green);
+}
+
+.banner-page .flex-wrapper .left-content p {
+  max-width: 480px;
+  width: 100%;
+  margin-bottom: 3.5rem;
+  color: #9ba4b6;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+@media screen and (max-width: 1049px) {
+  .banner-page .flex-wrapper .left-content .h1 {
+    font-size: 2.5rem;
+    line-height: .95;
+  }
+
+  .banner-page .flex-wrapper .left-content p {
+    font-size: 1rem;
+  }
+}

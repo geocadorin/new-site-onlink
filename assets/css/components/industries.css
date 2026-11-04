@@ -1,21 +1,84 @@
-/* Vitrine de setores — markup Skylo (.section-photos-images / row / image).
+/* Vitrine de setores — markup Skylo (.section-photos-images / row / image) + HUD de telemetria satelital.
    Sem a classe .section-photos no wrapper: o bundle WebGL ancora nela e zera a opacidade. */
 
 .scroll-panel.is-industries {
   --glow-x: 50%;
-  --glow-y: 100%;
+  --glow-y: 92%;
 }
 
+/* Cabeçalho em duas colunas no desktop: título à esquerda + pílula de status satelital à direita. */
 .industries_header {
-  max-width: 46rem;
-  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  width: 100%;
+  margin-bottom: 1.35rem;
+}
+
+.industries_header-copy {
+  max-width: 44rem;
 }
 
 .industries_header .skylo-is_paragraph-wrapper {
   max-width: 36rem;
+  margin-top: 0.65rem;
+  margin-bottom: 0;
 }
 
+.industries_live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-shrink: 0;
+  padding: 0.75rem 1.1rem;
+  border-radius: 0.65rem;
+}
+
+.industries_live-dot {
+  position: relative;
+  width: 0.55rem;
+  height: 0.55rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background-color: var(--skylo-green);
+  box-shadow: 0 0 12px var(--skylo-green);
+}
+
+.industries_live-dot::after {
+  content: "";
+  position: absolute;
+  inset: -0.3rem;
+  border-radius: 50%;
+  border: 1.5px solid var(--skylo-green);
+  opacity: 0;
+  animation: industries-pulse-ring 2.4s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+.industries_live-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.industries_live-title {
+  color: var(--white);
+  font-family: Inter, Arial, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.industries_live-meta .skylo-label {
+  font-size: 0.75rem;
+  line-height: 1.2;
+}
+
+/* Container das fileiras de cards */
 .is-industries .section-photos-images {
+  --parallax-x: 0px;
+  --parallax-y: 0px;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -25,69 +88,482 @@
 .is-industries .section-photos-row {
   width: 100%;
   padding: 0;
+  transition: transform 1.05s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
 
 .is-industries .section-photos-row-inner {
   display: flex;
   flex-wrap: nowrap;
+  will-change: transform;
 }
 
+/* Card individual de operação/setor */
 .is-industries .section-photos-image {
+  --spot-x: 50%;
+  --spot-y: 50%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin-bottom: 0;
+  padding: 1rem 1.15rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  background-color: #16181d;
+  cursor: pointer;
+  outline: none;
+  isolation: isolate;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.38);
+  transition:
+    flex 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease,
+    box-shadow 0.4s ease;
 }
 
+/* Spotlight radial + linha de topo luminosa */
+.is-industries .section-photos-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(
+      18rem circle at var(--spot-x, 50%) var(--spot-y, 50%),
+      color-mix(in srgb, var(--skylo-green) 22%, transparent),
+      transparent 70%
+    ),
+    linear-gradient(
+      90deg,
+      transparent 10%,
+      color-mix(in srgb, var(--skylo-green) 75%, transparent) 50%,
+      transparent 90%
+    ) top / 100% 1px no-repeat;
+  transition: opacity 0.4s ease;
+}
+
+/* Gradiente de leitura sobre a imagem */
+.is-industries .section-photos-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(12, 15, 20, 0.52) 0%,
+      rgba(12, 15, 20, 0.12) 38%,
+      rgba(12, 15, 20, 0.78) 74%,
+      rgba(10, 13, 18, 0.95) 100%
+    );
+  transition: opacity 0.4s ease;
+}
+
+/* Imagem com movimento contínuo (Ken Burns) + resposta ao hover */
+.is-industries .section-photos-image img {
+  z-index: 1;
+  transform: scale(1.06);
+  filter: saturate(0.96) contrast(1.03) brightness(0.92);
+  will-change: transform, filter;
+  transition:
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.5s ease;
+}
+
+.is-industries.is-inview .section-photos-row-1 .section-photos-image:nth-child(odd) img,
+.is-industries.is-inview .section-photos-row-2 .section-photos-image:nth-child(even) img {
+  animation: industries-ken-burns-a 15s ease-in-out infinite alternate;
+}
+
+.is-industries.is-inview .section-photos-row-1 .section-photos-image:nth-child(even) img,
+.is-industries.is-inview .section-photos-row-2 .section-photos-image:nth-child(odd) img {
+  animation: industries-ken-burns-b 17s ease-in-out infinite alternate;
+}
+
+/* Estado ativo / hover / foco do card */
+.is-industries .section-photos-image:hover,
+.is-industries .section-photos-image:focus-visible,
+.is-industries .section-photos-image.is-active {
+  border-color: color-mix(in srgb, var(--skylo-green) 58%, transparent);
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.5),
+    0 0 36px color-mix(in srgb, var(--skylo-green) 18%, transparent);
+}
+
+.is-industries .section-photos-image:hover::before,
+.is-industries .section-photos-image:focus-visible::before,
+.is-industries .section-photos-image.is-active::before {
+  opacity: 1;
+}
+
+.is-industries .section-photos-image:hover img,
+.is-industries .section-photos-image:focus-visible img,
+.is-industries .section-photos-image.is-active img {
+  animation-play-state: paused;
+  transform: scale(1.12) translate3d(0, -2%, 0);
+  filter: saturate(1.15) contrast(1.06) brightness(1.03);
+}
+
+/* HUD Superior do Card (Índice + Badge Satelital) */
+.section-photos-hud {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.section-photos-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.85rem;
+  height: 1.65rem;
+  padding: 0 0.45rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 0.3rem;
+  background-color: rgba(12, 15, 20, 0.58);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: #d5dbe6;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  transition: border-color 0.3s, color 0.3s, background-color 0.3s;
+}
+
+.is-industries .section-photos-image:hover .section-photos-index,
+.is-industries .section-photos-image:focus-visible .section-photos-index,
+.is-industries .section-photos-image.is-active .section-photos-index {
+  border-color: color-mix(in srgb, var(--skylo-green) 55%, transparent);
+  background-color: rgba(115, 245, 116, 0.16);
+  color: var(--skylo-green);
+}
+
+.section-photos-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  padding: 0.26rem 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background-color: rgba(12, 15, 20, 0.62);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: var(--white);
+  font-family: Inter, Arial, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.section-photos-badge-dot {
+  width: 0.38rem;
+  height: 0.38rem;
+  border-radius: 50%;
+  background-color: var(--skylo-green);
+  box-shadow: 0 0 8px var(--skylo-green);
+  animation: industries-dot-blink 2.2s ease-in-out infinite;
+  animation-delay: calc(var(--card-index, 0) * 320ms);
+}
+
+/* Bloco Inferior do Card (Título + Descrição + Tag de Telemetria) */
+.section-photos-content {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.38rem;
+  width: 100%;
+  margin-top: auto;
+  transform: translate3d(0, 0.35rem, 0);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.is-industries .section-photos-image:hover .section-photos-content,
+.is-industries .section-photos-image:focus-visible .section-photos-content,
+.is-industries .section-photos-image.is-active .section-photos-content {
+  transform: translate3d(0, 0, 0);
+}
+
+/* Sobrescreve posicionamento absoluto herdado de surfaces.css */
+.is-industries .section-photos-text {
+  position: static;
+  margin: 0;
+  max-width: 100%;
+  color: var(--white);
+  font-family: Inter, Arial, sans-serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+}
+
+.section-photos-desc {
+  margin: 0;
+  color: #d0d7e3;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 0.86rem;
+  line-height: 1.38;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  opacity: 0.78;
+  transition: opacity 0.35s ease, color 0.35s ease;
+}
+
+.is-industries .section-photos-image:hover .section-photos-desc,
+.is-industries .section-photos-image:focus-visible .section-photos-desc,
+.is-industries .section-photos-image.is-active .section-photos-desc {
+  opacity: 1;
+  color: var(--white);
+}
+
+.section-photos-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-top: 0.3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.section-photos-footer .process-step_tag {
+  padding: 0.25rem 0.52rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  background-color: rgba(115, 245, 116, 0.14);
+}
+
+.section-photos-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background-color: rgba(255, 255, 255, 0.06);
+  color: var(--white);
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.section-photos-arrow svg {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.is-industries .section-photos-image:hover .section-photos-arrow,
+.is-industries .section-photos-image:focus-visible .section-photos-arrow,
+.is-industries .section-photos-image.is-active .section-photos-arrow {
+  transform: translateX(0.18rem);
+  border-color: var(--skylo-green);
+  background-color: var(--skylo-green);
+  color: #0b1116;
+}
+
+/* Keyframes de vida e movimento contínuo */
+@keyframes industries-ken-burns-a {
+  0% {
+    transform: scale(1.04) translate3d(-1.2%, -0.8%, 0);
+  }
+  100% {
+    transform: scale(1.12) translate3d(1.2%, 0.8%, 0);
+  }
+}
+
+@keyframes industries-ken-burns-b {
+  0% {
+    transform: scale(1.11) translate3d(1.2%, -0.6%, 0);
+  }
+  100% {
+    transform: scale(1.04) translate3d(-1.2%, 0.8%, 0);
+  }
+}
+
+@keyframes industries-row-drift-1 {
+  0% {
+    transform: translate3d(calc(var(--parallax-x, 0px) - 0.35rem), 0, 0);
+  }
+  100% {
+    transform: translate3d(calc(var(--parallax-x, 0px) + 0.35rem), 0, 0);
+  }
+}
+
+@keyframes industries-row-drift-2 {
+  0% {
+    transform: translate3d(calc((var(--parallax-x, 0px) * -1) + 0.35rem), 0, 0);
+  }
+  100% {
+    transform: translate3d(calc((var(--parallax-x, 0px) * -1) - 0.35rem), 0, 0);
+  }
+}
+
+@keyframes industries-pulse-ring {
+  0% {
+    transform: scale(0.75);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.85);
+    opacity: 0;
+  }
+}
+
+@keyframes industries-dot-blink {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.82);
+  }
+}
+
+/* Coreografia de entrada ao entrar na seção (Desktop) */
 @media (min-width: 1050px) {
   .is-industries .section-photos-images {
-    gap: 1rem;
+    gap: 0.9rem;
   }
 
   .is-industries .section-photos-row-inner {
-    gap: 1rem;
+    gap: 0.9rem;
+  }
+
+  .is-industries.is-inview .section-photos-row-1 .section-photos-row-inner {
+    animation: industries-row-drift-1 9s ease-in-out infinite alternate;
+  }
+
+  .is-industries.is-inview .section-photos-row-2 .section-photos-row-inner {
+    animation: industries-row-drift-2 9s ease-in-out infinite alternate;
   }
 
   .is-industries .section-photos-image {
-    flex: 1 1 0;
-    height: min(28vh, 17.5rem);
-    padding-bottom: 0;
-    transition: transform .5s;
+    flex: 1 1 0%;
+    height: min(26.5vh, 15.75rem);
+    padding-bottom: 1rem;
   }
 
-  .is-industries .section-photos-image:hover {
-    transform: translateY(-.25rem);
+  /* Expansão dinâmica estilo Bento Accordion ao interagir */
+  .is-industries .section-photos-image.is-active {
+    flex: 1.18 1 0%;
   }
 
-  .is-industries .section-photos-text {
-    max-width: 76%;
-    margin-right: 8%;
-    font-family: Inter, Arial, sans-serif;
+  .is-industries .section-photos-row-inner:hover .section-photos-image {
+    flex: 0.92 1 0%;
+  }
+
+  .is-industries .section-photos-row-inner:hover .section-photos-image:hover,
+  .is-industries .section-photos-row-inner:focus-within .section-photos-image:focus-visible {
+    flex: 1.42 1 0%;
+    transform: translateY(-0.28rem);
+  }
+
+  /* Estado inicial antes da entrada na viewport (só quando JS de vitrine está ativo) */
+  .is-industries.is-ready:not(.is-inview) .section-photos-row-1 {
+    transform: translate3d(3rem, 0, 0);
+  }
+
+  .is-industries.is-ready:not(.is-inview) .section-photos-row-2 {
+    transform: translate3d(-3rem, 0, 0);
+  }
+
+  .is-industries.is-ready:not(.is-inview) .section-photos-image {
+    opacity: 0;
+    transform: translate3d(0, 1.75rem, 0) scale(0.95);
+  }
+
+  .is-industries.is-ready:not(.is-inview) .section-photos-image img {
+    transform: scale(1.22);
+  }
+
+  .is-industries.is-ready.is-inview .section-photos-image {
+    transition-delay:
+      0ms,
+      calc(var(--card-index, 0) * 85ms + 80ms),
+      calc(var(--card-index, 0) * 85ms + 80ms),
+      0ms,
+      0ms;
+  }
+
+  .is-industries.is-ready.is-inview.has-entered .section-photos-image {
+    transition-delay: 0ms;
   }
 }
 
-@media (min-width: 1050px) and (max-height: 760px) {
+/* Notebooks e telas com altura compacta */
+@media (min-width: 1050px) and (max-height: 820px) {
   .industries_header {
-    margin-bottom: 1.15rem;
+    margin-bottom: 0.95rem;
+  }
+
+  .industries_header .skylo-is_paragraph-wrapper {
+    margin-top: 0.4rem;
+  }
+
+  .is-industries .section-photos-images {
+    gap: 0.75rem;
+  }
+
+  .is-industries .section-photos-row-inner {
+    gap: 0.75rem;
   }
 
   .is-industries .section-photos-image {
-    height: min(24vh, 14.5rem);
+    height: min(23.5vh, 13.5rem);
+    padding: 0.8rem 0.95rem;
   }
 
   .is-industries .section-photos-text {
-    font-size: 1.25rem;
-    margin-bottom: 8%;
-    margin-left: 8%;
+    font-size: 1.22rem;
+  }
+
+  .section-photos-desc {
+    font-size: 0.8rem;
+    line-height: 1.32;
   }
 }
 
+/* Tablet e Mobile */
 @media (max-width: 1049px) {
+  .industries_header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .industries_live-pill {
+    padding: 0.55rem 0.85rem;
+  }
+
   .is-industries .section-photos-images {
-    margin: 0 -.25rem;
+    gap: 0.65rem;
+    margin: 0 -0.25rem;
   }
 
   .is-industries .section-photos-row {
-    height: 20vh;
+    height: auto;
     width: 100%;
-    margin: .25rem 0;
+    margin: 0;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     -ms-overflow-style: none;
@@ -100,9 +576,74 @@
 
   .is-industries .section-photos-row-inner {
     width: max-content;
+    gap: 0.65rem;
+    padding: 0.15rem 0.25rem;
   }
 
   .is-industries .section-photos-image {
+    flex: 0 0 min(18.5rem, 76vw);
+    width: min(18.5rem, 76vw);
+    height: min(21.5vh, 12.25rem);
+    margin: 0;
+    padding: 0.85rem 1rem;
     scroll-snap-align: start;
+  }
+
+  .is-industries .section-photos-text {
+    font-size: 1.15rem;
+  }
+
+  .section-photos-desc {
+    font-size: 0.78rem;
+    -webkit-line-clamp: 2;
+  }
+
+  .section-photos-footer {
+    padding-top: 0.25rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .industries_live-pill {
+    display: none;
+  }
+
+  .industries_header {
+    margin-bottom: 0.85rem;
+  }
+
+  .is-industries .section-photos-image {
+    flex: 0 0 min(16.5rem, 80vw);
+    width: min(16.5rem, 80vw);
+    height: min(20vh, 11.25rem);
+    padding: 0.75rem 0.85rem;
+  }
+
+  .section-photos-hud {
+    gap: 0.35rem;
+  }
+
+  .section-photos-badge {
+    font-size: 0.62rem;
+    padding: 0.2rem 0.48rem;
+  }
+
+  .is-industries .section-photos-text {
+    font-size: 1.05rem;
+  }
+
+  .section-photos-desc {
+    font-size: 0.75rem;
+    -webkit-line-clamp: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-industries .section-photos-row,
+  .is-industries .section-photos-image,
+  .is-industries .section-photos-image img,
+  .section-photos-content {
+    animation: none !important;
+    transition: none !important;
   }
 }

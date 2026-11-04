@@ -54,6 +54,7 @@
 
     revealOnIntersect();
     initAppShowcase();
+    initIndustriesShowcase();
   }
 
   function initAppShowcase() {
@@ -84,6 +85,127 @@
         setActive(index);
       });
     });
+  }
+
+  function initIndustriesShowcase() {
+    var panel = document.querySelector("[data-industries-showcase]");
+    if (!panel) return;
+
+    var stage = panel.querySelector("[data-industries-stage]");
+    var cards = panel.querySelectorAll("[data-industry-card]");
+    if (!stage || !cards.length) return;
+
+    var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var activeIndex = 0;
+    var isInView = false;
+    var isPointerInside = false;
+    var cycleTimer = null;
+    var enteredTimer = null;
+
+    if (!prefersReducedMotion) {
+      panel.classList.add("is-ready");
+    } else {
+      panel.classList.add("is-inview", "has-entered");
+    }
+
+    function setActiveCard(index) {
+      activeIndex = index;
+      cards.forEach(function (card, i) {
+        card.classList.toggle("is-active", i === index);
+      });
+    }
+
+    function startAutoCycle() {
+      stopAutoCycle();
+      if (prefersReducedMotion || !isInView || isPointerInside) return;
+      cycleTimer = window.setInterval(function () {
+        setActiveCard((activeIndex + 1) % cards.length);
+      }, 3200);
+    }
+
+    function stopAutoCycle() {
+      if (cycleTimer) {
+        window.clearInterval(cycleTimer);
+        cycleTimer = null;
+      }
+    }
+
+    cards.forEach(function (card, index) {
+      card.addEventListener("mouseenter", function () {
+        isPointerInside = true;
+        stopAutoCycle();
+        setActiveCard(index);
+      });
+
+      card.addEventListener("focus", function () {
+        isPointerInside = true;
+        stopAutoCycle();
+        setActiveCard(index);
+      });
+
+      card.addEventListener("blur", function () {
+        isPointerInside = false;
+        startAutoCycle();
+      });
+
+      card.addEventListener("click", function () {
+        setActiveCard(index);
+      });
+
+      card.addEventListener("pointermove", function (e) {
+        var rect = card.getBoundingClientRect();
+        if (!rect.width || !rect.height) return;
+        var x = ((e.clientX - rect.left) / rect.width) * 100;
+        var y = ((e.clientY - rect.top) / rect.height) * 100;
+        card.style.setProperty("--spot-x", x.toFixed(1) + "%");
+        card.style.setProperty("--spot-y", y.toFixed(1) + "%");
+      });
+    });
+
+    if (!prefersReducedMotion) {
+      stage.addEventListener("pointermove", function (e) {
+        var rect = stage.getBoundingClientRect();
+        if (!rect.width || !rect.height) return;
+        var normX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+        var normY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+        stage.style.setProperty("--parallax-x", (normX * -14).toFixed(1) + "px");
+        stage.style.setProperty("--parallax-y", (normY * -6).toFixed(1) + "px");
+      });
+
+      stage.addEventListener("pointerleave", function () {
+        isPointerInside = false;
+        stage.style.setProperty("--parallax-x", "0px");
+        stage.style.setProperty("--parallax-y", "0px");
+        startAutoCycle();
+      });
+    }
+
+    if ("IntersectionObserver" in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            isInView = true;
+            panel.classList.add("is-inview");
+            window.clearTimeout(enteredTimer);
+            enteredTimer = window.setTimeout(function () {
+              panel.classList.add("has-entered");
+            }, 850);
+            startAutoCycle();
+          } else {
+            isInView = false;
+            panel.classList.remove("is-inview", "has-entered");
+            window.clearTimeout(enteredTimer);
+            stopAutoCycle();
+          }
+        });
+      }, { threshold: 0.16 });
+
+      observer.observe(panel);
+    } else {
+      isInView = true;
+      panel.classList.add("is-inview", "has-entered");
+      startAutoCycle();
+    }
   }
 
   document.addEventListener("DOMContentLoaded", initAnimations);

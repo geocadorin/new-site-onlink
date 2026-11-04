@@ -767,49 +767,160 @@
         </section>
 
         <section id="setores" aria-labelledby="industries-title">
-          <div class="scroll-panel is-industries" data-scroll-item="INDUSTRIES-STEP">
+          <div class="scroll-panel is-industries" data-scroll-item="INDUSTRIES-STEP" data-industries-showcase>
             <div class="section-inner">
               <div class="container-large">
                 <div class="page-padding">
                   <div class="industries_header">
-                    <div class="skylo-label_wrapper" data-aos="fade-up"><p class="skylo-label">Descubra o seu caso de uso</p></div>
-                    <h2 id="industries-title" class="heading-large white" data-aos="fade-up" data-aos-delay="100">Conectividade sem fronteiras — <span class="text-color-green">para cada operação.</span></h2>
-                    <div class="skylo-is_paragraph-wrapper" data-aos="fade-up" data-aos-delay="200">
-                      <p class="skylo-is_paragraph">Da cava ao canteiro, do talhão à serra: a mesma telemetria satelital acompanha cada tipo de máquina pesada.</p>
+                    <div class="industries_header-copy">
+                      <div class="skylo-label_wrapper" data-aos="fade-up"><p class="skylo-label">Descubra o seu caso de uso</p></div>
+                      <h2 id="industries-title" class="heading-large white" data-aos="fade-up" data-aos-delay="100">Conectividade sem fronteiras — <span class="text-color-green">para cada operação.</span></h2>
+                      <div class="skylo-is_paragraph-wrapper" data-aos="fade-up" data-aos-delay="200">
+                        <p class="skylo-is_paragraph">Da cava ao canteiro, do talhão à serra: a mesma telemetria satelital acompanha cada tipo de máquina pesada.</p>
+                      </div>
+                    </div>
+
+                    <div class="industries_live-pill surface-frosty" data-aos="fade-up" data-aos-delay="250" aria-label="Status de cobertura satelital em 6 setores">
+                      <span class="industries_live-dot" aria-hidden="true"></span>
+                      <div class="industries_live-meta">
+                        <span class="industries_live-title">Cobertura Satelital Ativa</span>
+                        <span class="skylo-label">6 setores &middot; Passe o cursor para inspecionar</span>
+                      </div>
                     </div>
                   </div>
 
-                  <div class="section-photos-images">
+                  <div class="section-photos-images" data-industries-stage>
                     <div class="section-photos-row section-photos-row-1">
                       <div class="section-photos-row-inner">
-                        <div class="section-photos-image">
+                        <article class="section-photos-image is-active" style="--card-index: 0" data-industry-card="0" tabindex="0">
                           <img src="assets/img/industries/construction.avif" alt="Construção Pesada" loading="lazy">
-                          <div class="section-photos-text">Construção Pesada</div>
-                        </div>
-                        <div class="section-photos-image">
+                          <div class="section-photos-hud">
+                            <span class="section-photos-index">01</span>
+                            <span class="section-photos-badge">
+                              <span class="section-photos-badge-dot" aria-hidden="true"></span>
+                              Canteiros &amp; Obras
+                            </span>
+                          </div>
+                          <div class="section-photos-content">
+                            <div class="section-photos-text">Construção Pesada</div>
+                            <p class="section-photos-desc">Escavadeiras, tratores e linha amarela monitorados em obras remotas e barragens.</p>
+                            <div class="section-photos-footer">
+                              <span class="process-step_tag">Horímetro &amp; Geofencing</span>
+                              <span class="section-photos-arrow" aria-hidden="true">
+                                <svg viewBox="0 0 16 16" fill="none"><path d="M3.333 8h9.334M12.667 8 8 3.333M12.667 8 8 12.667" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                              </span>
+                            </div>
+                          </div>
+                        </article>
+
+                        <article class="section-photos-image" style="--card-index: 1" data-industry-card="1" tabindex="0">
                           <img src="assets/img/industries/mining.avif" alt="Mineração" loading="lazy">
-                          <div class="section-photos-text">Mineração</div>
-                        </div>
-                        <div class="section-photos-image">
+                          <div class="section-photos-hud">
+                            <span class="section-photos-index">02</span>
+                            <span class="section-photos-badge">
+                              <span class="section-photos-badge-dot" aria-hidden="true"></span>
+                              Cavas &amp; Serras
+                            </span>
+                          </div>
+                          <div class="section-photos-content">
+                            <div class="section-photos-text">Mineração</div>
+                            <p class="section-photos-desc">Telemetria ininterrupta em cavas profundas e frentes de lavra sem sinal 4G.</p>
+                            <div class="section-photos-footer">
+                              <span class="process-step_tag">Ciclo de Carga 24/7</span>
+                              <span class="section-photos-arrow" aria-hidden="true">
+                                <svg viewBox="0 0 16 16" fill="none"><path d="M3.333 8h9.334M12.667 8 8 3.333M12.667 8 8 12.667" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                              </span>
+                            </div>
+                          </div>
+                        </article>
+
+                        <article class="section-photos-image" style="--card-index: 2" data-industry-card="2" tabindex="0">
                           <img src="assets/img/industries/agriculture.avif" alt="Agronegócio" loading="lazy">
-                          <div class="section-photos-text">Agronegócio</div>
-                        </div>
+                          <div class="section-photos-hud">
+                            <span class="section-photos-index">03</span>
+                            <span class="section-photos-badge">
+                              <span class="section-photos-badge-dot" aria-hidden="true"></span>
+                              Talhões &amp; Safra
+                            </span>
+                          </div>
+                          <div class="section-photos-content">
+                            <div class="section-photos-text">Agronegócio</div>
+                            <p class="section-photos-desc">Colheitadeiras, pulverizadores e tratores conectados em toda a área produtiva.</p>
+                            <div class="section-photos-footer">
+                              <span class="process-step_tag">Consumo &amp; Eficiência</span>
+                              <span class="section-photos-arrow" aria-hidden="true">
+                                <svg viewBox="0 0 16 16" fill="none"><path d="M3.333 8h9.334M12.667 8 8 3.333M12.667 8 8 12.667" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                              </span>
+                            </div>
+                          </div>
+                        </article>
                       </div>
                     </div>
+
                     <div class="section-photos-row section-photos-row-2">
                       <div class="section-photos-row-inner">
-                        <div class="section-photos-image">
+                        <article class="section-photos-image" style="--card-index: 3" data-industry-card="3" tabindex="0">
                           <img src="assets/img/industries/transport.avif" alt="Transporte Fora de Estrada" loading="lazy">
-                          <div class="section-photos-text">Transporte Fora de Estrada</div>
-                        </div>
-                        <div class="section-photos-image">
+                          <div class="section-photos-hud">
+                            <span class="section-photos-index">04</span>
+                            <span class="section-photos-badge">
+                              <span class="section-photos-badge-dot" aria-hidden="true"></span>
+                              Rotas Isoladas
+                            </span>
+                          </div>
+                          <div class="section-photos-content">
+                            <div class="section-photos-text">Transporte Fora de Estrada</div>
+                            <p class="section-photos-desc">Rastreamento satelital contínuo em serras, florestas e corredores logísticos.</p>
+                            <div class="section-photos-footer">
+                              <span class="process-step_tag">Rota &amp; Desvios</span>
+                              <span class="section-photos-arrow" aria-hidden="true">
+                                <svg viewBox="0 0 16 16" fill="none"><path d="M3.333 8h9.334M12.667 8 8 3.333M12.667 8 8 12.667" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                              </span>
+                            </div>
+                          </div>
+                        </article>
+
+                        <article class="section-photos-image" style="--card-index: 4" data-industry-card="4" tabindex="0">
                           <img src="assets/img/industries/infrastructure.avif" alt="Infraestrutura" loading="lazy">
-                          <div class="section-photos-text">Infraestrutura</div>
-                        </div>
-                        <div class="section-photos-image">
+                          <div class="section-photos-hud">
+                            <span class="section-photos-index">05</span>
+                            <span class="section-photos-badge">
+                              <span class="section-photos-badge-dot" aria-hidden="true"></span>
+                              Obras Lineares
+                            </span>
+                          </div>
+                          <div class="section-photos-content">
+                            <div class="section-photos-text">Infraestrutura</div>
+                            <p class="section-photos-desc">Visibilidade total de frotas multimarcas em rodovias, ferrovias e saneamento.</p>
+                            <div class="section-photos-footer">
+                              <span class="process-step_tag">+150 Modelos</span>
+                              <span class="section-photos-arrow" aria-hidden="true">
+                                <svg viewBox="0 0 16 16" fill="none"><path d="M3.333 8h9.334M12.667 8 8 3.333M12.667 8 8 12.667" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                              </span>
+                            </div>
+                          </div>
+                        </article>
+
+                        <article class="section-photos-image" style="--card-index: 5" data-industry-card="5" tabindex="0">
                           <img src="assets/img/industries/energy.avif" alt="Energia" loading="lazy">
-                          <div class="section-photos-text">Energia</div>
-                        </div>
+                          <div class="section-photos-hud">
+                            <span class="section-photos-index">06</span>
+                            <span class="section-photos-badge">
+                              <span class="section-photos-badge-dot" aria-hidden="true"></span>
+                              Redes &amp; Parques
+                            </span>
+                          </div>
+                          <div class="section-photos-content">
+                            <div class="section-photos-text">Energia</div>
+                            <p class="section-photos-desc">Operação assistida em linhas de transmissão, subestações e parques remotos.</p>
+                            <div class="section-photos-footer">
+                              <span class="process-step_tag">Diagnóstico Remoto</span>
+                              <span class="section-photos-arrow" aria-hidden="true">
+                                <svg viewBox="0 0 16 16" fill="none"><path d="M3.333 8h9.334M12.667 8 8 3.333M12.667 8 8 12.667" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                              </span>
+                            </div>
+                          </div>
+                        </article>
                       </div>
                     </div>
                   </div>
